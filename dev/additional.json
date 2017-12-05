@@ -1,0 +1,28 @@
+{
+  "tables":{
+    "name":"аренда столов",
+    "price":20
+  },
+  "chairs":{
+    "name":"аренда стульев",
+    "price":25
+  },
+  "shater":{
+    "name":"аренда шатров",
+    "price":100
+  },
+  "naves":{
+    "name":"аренда навесов",
+    "price":30
+  },
+  "delivery":{
+    "name":"доставка мебели",
+    "price":0,
+    "fixed_price":600
+  },
+  "delivery_far":{
+    "name":"доставка за город",
+    "price":0,
+    "fixed_price":1200
+  }
+}

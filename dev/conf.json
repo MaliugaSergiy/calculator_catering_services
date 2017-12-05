@@ -1,0 +1,215 @@
+{
+  "furshet":{
+    "min_price":5500,
+    "menu_name":"Фуршет",
+    "name":"фуршета",
+    "price_list":{
+      "econom":{
+        "price":188,
+        "name":"эконом",
+        "food":{
+          "asorti":{"value":150,"name":"Ассорти"},
+          "kanape":{"value":60,"name":"Канапе"},
+          "salat":{"value":"-","name":"Салаты"},
+          "cold_zak":{"value":90,"name":"Холодные закуски"},
+          "hot_zak":{"value":100,"name":"Горячие закуски"},
+          "desert":{"value":"-","name":"Десерты"}
+
+        },
+        "drink":{
+          "sok":{"value":200,"name":"Сок"},
+          "voda":{"value":500,"name":"Вода минеральная"}
+        }
+      },
+      "busnes":{
+        "price":341,
+        "name":"бизнес",
+        "food":{
+          "asorti":{"value":"-","name":"Ассорти"},
+          "kanape":{"value":180,"name":"Канапе"},
+          "salat":{"value":"-","name":"Салаты"},
+          "cold_zak":{"value":190,"name":"Холодные закуски"},
+          "hot_zak":{"value":150,"name":"Гарячие закуски"},
+          "desert":{"value":"-","name":"Десерты"}
+        },
+        "drink":{
+          "sok":{"value":200,"name":"Лимонад"}
+        }
+      },
+      "premium":{
+        "price":534,
+        "name":"премиум",
+        "food":{
+          "asorti":{"value":30,"name":"Ассорти"},
+          "kanape":{"value":170,"name":"Канапе"},
+          "salat":{"value":15,"name":"Салаты"},
+          "cold_zak":{"value":145,"name":"Холодные закуски"},
+          "hot_zak":{"value":160,"name":"Горячие закуски"},
+          "desert":{"value":"-","name":"Десерты"}
+        },
+        "drink":{
+          "sok":{"value":100,"name":"Лимонад"},
+          "coffee":{"value":250,"name":"Чай/кофе"}
+
+        }
+      }
+    }
+  },
+  "banket":{
+    "min_price":8000,
+    "menu_name":"Банкет",
+    "name":"банкета",
+    "price_list":{
+      "econom":{
+        "price":407,
+        "name":"эконом",
+        "food":{
+          "asorti":{"value":195,"name":"Ассорти"},
+          "salat":{"value":150,"name":"Салаты"},
+          "cold_zak":{"value":50,"name":"Холодные закуски"},
+          "hot_zak":{"value":130,"name":"Горячие закуски"},
+          "osn":{"value":410,"name":"Основные блюда"}
+        },
+        "drink":{
+          "sok":{"value":200,"name":"Сок"},
+          "voda":{"value":500,"name":"Вода минеральная"}
+        }
+      },
+      "busnes":{
+        "price":654,
+        "name":"бизнес",
+        "food":{
+          "asorti":{"value":135,"name":"Ассорти"},
+          "salat":{"value":225,"name":"Салаты"},
+          "cold_zak":{"value":90,"name":"Холодные закуски"},
+          "hot_zak":{"value":165,"name":"Горячие закуски"},
+          "osn":{"value":700,"name":"Основные блюда"}
+        },
+
+        "drink":{
+          "sok":{"value":200,"name":"Сок"},
+          "voda":{"value":200,"name":"Лимонад"}
+        }
+      },
+      "premium":{
+        "price":1010,
+        "name":"премиум",
+        "food":{
+          "asorti":{"value":120,"name":"Ассорти"},
+          "salat":{"value":225,"name":"Салаты"},
+          "cold_zak":{"value":78,"name":"Холодные закуски"},
+          "hot_zak":{"value":153,"name":"Горячие закуски"},
+          "osn":{"value":925,"name":"Основные блюда"}
+        },
+        "drink":{
+          "sok":{"value":200,"name":"Лимонад"},
+          "punch":{"value":200,"name":"Пунш (б/а)"},
+          "coffee":{"value":250,"name":"Чай/кофе"}
+        }
+      }
+    }
+  },
+  "koffe-break":{
+    "min_price":3500,
+    "menu_name":"Кофе-брейк",
+    "name":"кофе-брейка",
+    "price_list":{
+      "econom":{
+        "price":74,
+        "name":"эконом",
+        "food":{
+          "asorti":{"value":60,"name":"Ассорти"},
+          "kanape":{"value":"-","name":"Канапе"},
+          "cold_zak":{"value":"-","name":"Холодные закуски"},
+          "desert":{"value":120,"name":"Десерт"}
+        },
+        "drink":{
+          "sok":{"value":"-","name":"Сок"},
+          "coffee":{"value":250,"name":"Чай/кофе"}
+        }
+      },
+      "busnes":{
+        "price":117,
+        "name":"бизнес",
+        "food":{
+          "asorti":{"value":90,"name":"Ассорти"},
+          "kanape":{"value":20,"name":"Канапе"},
+          "cold_zak":{"value":50,"name":"Холодные закуски"},
+          "desert":{"value":130,"name":"Десерт"}
+
+        },
+        "drink":{
+          "sok":{"value":"-","name":"Сок"},
+          "coffee":{"value":250,"name":"Чай/кофе"}
+        }
+      },
+      "premium":{
+        "price":178,
+        "name":"премиум",
+        "food":{
+          "asorti":{"value":"-","name":"Ассорти"},
+          "kanape":{"value":70,"name":"Канапе"},
+          "cold_zak":{"value":50,"name":"Холодные закуски"},
+          "desert":{"value":175,"name":"Десерт"}
+
+        },
+        "drink":{
+          "sok":{"value":200,"name":"Пунш б/а"},
+          "voda":{"value":"-","name":"Вода минеральная"},
+          "coffee":{"value":250,"name":"Чай/кофе"}
+        }
+      }
+    }
+  },
+  "barbeq":{
+    "min_price":8000,
+    "menu_name":"Барбекю",
+    "name":"барбекю",
+    "price_list":{
+      "econom":{
+        "price":298,
+        "name":"эконом",
+        "food":{
+          "asorti":{"value":165,"name":"Ассорти"},
+          "kanape":{"value":"-","name":"Канапе"},
+          "cold_zak":{"value":150,"name":"Холодные закуски"},
+          "mangal":{"value":250,"name":"Блюда с мангала"},
+          "second":{"value":"-","name":"Первое или второе"}
+
+        },
+        "drink":{
+
+        }
+      },
+      "busnes":{
+        "price":493,
+        "name":"бизнес",
+        "food":{
+          "asorti":{"value":135,"name":"Ассорти"},
+          "kanape":{"value":70,"name":"Канапе"},
+          "salat":{"value":150,"name":"Салаты"},
+          "mangal":{"value":600,"name":"Блюда с мангала"}
+        },
+        "drink":{
+          "sok":{"value":260,"name":"Лимонад"}
+
+        }
+      },
+      "premium":{
+        "price":839,
+        "name":"премиум",
+        "food":{
+          "asorti":{"value":30,"name":"Ассорти"},
+          "kanape":{"value":130,"name":"Канапе"},
+          "salat":{"value":150,"name":"Салаты"},
+          "mangal":{"value":785,"name":"Блюда с мангала"}
+        },
+        "drink":{
+          "sok":{"value":200,"name":"Лимонад"},
+          "punch":{"value":200,"name":"Пунш (б/а)"},
+          "coffee":{"value":250,"name":"Чай/кофе"}
+        }
+      }
+    }
+  }
+}

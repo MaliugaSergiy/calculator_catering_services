@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<div id="starttour" ng-app="mainApp" ng-controller="calcController" onmouseover="" ng-cloak>
+
+
+    <div class="" id="calcMenuEvent">
+        <div id="calc_menu" ng-include="'tmpl/main_menu.htm'"></div>
+    </div>
+    <section class="CalcName">
+        <div class="wr">
+            <div class="line-heading">
+                <span class="h-line"></span>
+                <p class="calc-heading " id="calc_anchor">Рассчитайте стоимость кейтеринга</p>
+                <span class="h-line"></span>
+            </div>
+        </div>
+    </section>
+    <section class="calcSet">
+        <div class="wr">
+
+            <div class="col-left">
+                <div class="item">
+                    <div class="name">Количество человек</div>
+                    <div class="range">
+                        <input ng-model="form_a.people_count" type="number" slider options="{
+                          from: 1,
+                          to: 300,
+                          step: 1,
+                          dimension: ' человек',
+                          vertical: false,
+                          limits: true,
+                          className: 'custoClass',
+                          scale: ['1','бизнес',],
+                          css: {
+                                 background: {' background-color': 'silver'},
+                                                 before: {'background-color': 'purple'},
+                                                 default: {'background-color': 'white'},
+                                                 after: {'background-color': 'green'},
+                                                 pointer: {'background-color': 'red'}
+                                 }
+
+                      }" ng-disabled="disabled"/>
+                        <input type="number"
+                               ng-model="form_a.people_count"/>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="name">Стоимость на человека, гр</div>
+                    <div class="range">
+                        <input ng-model="calc.service_type" ng-change="calc.serv_select(calc.service_type)" type="number"
+                               slider options="{
+                          from: 0,
+                          to: 2,
+                          step: 1,
+                          vertical: false,
+                          limits: false,
+                          scale: ['эконом','бизнес','премиум'],
+                          className: 'customClass',
+                           css: {
+                                 background: {' background-color': 'silver'},
+                                                 before: {'background-color': 'purple'},
+                                                 default: {'background-color': 'white'},
+                                                 after: {'background-color': 'green'},
+                                                 pointer: {'background-color': 'red'}
+                                 }
+                    }" ng-disabled="disabled"/>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="name">Дополнитеотные опции</div>
+                    <div class="range" ng-include="'tmpl/addOptions.htm'"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="well well-xs col-md-10 col-md-offset-1">
+        <div class="row">
+            <div class="col-md-6" id="calc_quantity">
+                <div class="col-md-12"><h3>Количество человек</h3></div>
+                <div class="col-md-12">
+                    <input ng-model="form_a.people_count" type="number" slider options="{
+                          from: 1,
+                          to: 300,
+                          step: 1,
+                          dimension: ' человек',
+                          vertical: false,
+                          limits: true,
+                          className: 'custoClass',
+
+
+                      }" ng-disabled="disabled"/>
+                </div>
+                <div class="col-md-4 col-md-offset-4" style="margin-top:20px;"><input type="number"
+                                                                                      ng-model="form_a.people_count"/>
+                </div>
+
+            </div>
+            <div class="col-md-6 no-top-value" id="calc_plan">
+                <h3>Стоимость на человека, грн</h3>
+
+                <input ng-model="calc.service_type" ng-change="calc.serv_select(calc.service_type)" type="number"
+                       slider options="{
+                          from: 0,
+                          to: 2,
+                          step: 1,
+
+                          vertical: false,
+                          limits: false,
+
+                          scale: ['эконом','бизнес','премиум'],
+                          className: 'customClass',
+                           css: {
+                                 background: {' background-color': 'silver'},
+                                                 before: {'background-color': 'purple'},
+                                                 default: {'background-color': 'white'},
+                                                 after: {'background-color': 'green'},
+                                                 pointer: {'background-color': 'red'}
+                                 }
+                    }" ng-disabled="disabled"/>
+                <div class="col-md-12" style="margin-top:30px;"><span style="margin-top:20px;">Выбраный пакет: {{calc.subjects[form_a.service_name]['price_list'][form_a.service_eddition].name}} {{calc.subjects[form_a.service_name]['price_list'][form_a.service_eddition].price}} грн</span>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <h2>Стоимость {{calc.subjects[form_a.service_name].name}}: <span style="color:orange;">{{calc.total_fee()}} ГРН
+                     </span><span class="minimum-price">{{calc.min_order}}</span></h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Вес блюд и обьем напитков на одну персону</h4>
+                <div class="well">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div ng-include="'tmpl/main.htm'"></div>
+                        </div>
+                        <div class="col-md-4">
+                            <div ng-include="'tmpl/drink.htm'"></div>
+                        </div>
+                        <div class="col-md-4">
+                            <div ng-include="'tmpl/addOptions.htm'"></div>
+                        </div>
+                        <!--<ul class="dropdown-menu" >-->
+                        <!--<li ng-repeat="(key,val) in calc.add_options">-->
+                        <!--<label class="btn btn-default" >-->
+                        <!--<input type="checkbox" autocomplete="off" ng-change="calc.add_opt(key)" ng-model="additional[key]"></input>{{ val.name}}-->
+                        <!--</label>-->
+                        <!--</li>-->
+                        <!--</ul>-->
+                        <div class="col-md-12 calc-form" id="calc_form">
+                            <h4>Оформить:</h4>
+                            <form name="req_form">
+
+                                <input type="text" class="form-control" name="name" ng-model="form_a.name"
+                                       placeholder="Ваше имя" ng-minlength="3" required>
+                                <br>
+                                <input type="text" class="form-control" name="phone" ng-model="form_a.phone"
+                                       ui-mask="(999) 999-99-99" ng-pattern="/[0-9]{10}/" required>
+
+                                <br>
+
+                                <input type="email" class="form-control" name="email" ng-model="form_a.email"
+                                       placeholder="Ваш e-mail">
+
+                                <br>
+                                <input type="text" class="form-control" name="date" ng-model="form_a.date"
+                                       placeholder="Дата мероприятия">
+                                <br>
+                                <input type="text" class="form-control" name="comment" ng-model="form_a.comment"
+                                       placeholder="Ваши пожелания">
+
+                                <br>
+                                <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                                    <div class="btn-group" role="group">
+                                        <input type="submit" class="btn btn-warning btn-lg" value="Отправить запрос"
+                                               ng-disabled="!req_form.$valid" ng-click="stat()"></input>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="js/sl/css/angular-awesome-slider.css">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>-->
+<script src="js/vendor/angular.min.js"></script>
+<script src="js/vendor/mask.js"></script>
+<script type="text/javascript" src="js/sl/core/index.js"></script>
+<script type="text/javascript" src="js/sl/core/config/constants.js"></script>
+<script type="text/javascript" src="js/sl/core/model/draggable.factory.js"></script>
+<script type="text/javascript" src="js/sl/core/model/pointer.factory.js"></script>
+<script type="text/javascript" src="js/sl/core/model/slider.factory.js"></script>
+<script type="text/javascript" src="js/sl/core/utils/utils.factory.js"></script>
+<script type="text/javascript" src="js/sl/core/template/slider.tmpl.js"></script>
+<script src="js/forms.js"></script>
+<script>
+    var mainApp = angular.module("mainApp", ['angularAwesomeSlider', 'ui.mask']);//['hc.slider']);
+
+    mainApp.controller('calcController', function ($scope, $http) {
+        var url = "conf.json";
+        $http.get(url).success(function (response) {
+            $scope.calc.subjects = response;
+
+        });
+        var url2 = "additional.json";
+        $http.get(url2).success(function (response) {
+            $scope.calc.add_options = response;
+        });
+
+        if (window.location.href.indexOf("banquet") > -1) {
+            var service_name_kokoc = "banket";
+        } else if (window.location.href.indexOf("bbq") > -1) {
+            var service_name_kokoc = "barbeq";
+        } else if (window.location.href.indexOf("coffee-brake") > -1) {
+            var service_name_kokoc = "koffe-break";
+        } else {
+            var service_name_kokoc = "furshet";
+        }
+        $scope.calc = {
+            service_name: service_name_kokoc,
+            service_eddition: "econom",
+            service_type: 0,
+            total_food: function () {
+                var calcObject;
+                var co = $scope.form_a;
+                calcObject = $scope.calc;
+                if (!Object.keys(calcObject.subjects).length) {
+                    return 0;
+                }
+                var Things = calcObject.subjects[co.service_name]['price_list']
+                    [co.service_eddition]['food'];
+                var total = 0;
+
+                for (var i of Object.keys(Things)) {
+
+                    if (Things[i]['value'] != "-") {
+                        total = total + Things[i]['value'];
+                    }
+
+                }
+                ;
+
+                return total;
+            },
+            total_drink: function () {
+                var calcObject;
+                var co = $scope.form_a;
+                calcObject = $scope.calc;
+                if (!Object.keys(calcObject.subjects).length) {
+                    return 0;
+                }
+                var Things = calcObject.subjects[co.service_name]['price_list']
+                    [co.service_eddition]['drink'];
+                var total = 0;
+
+                for (var i of Object.keys(Things)) {
+
+                    if (Things[i]['value'] != "-") {
+                        total = total + Things[i]['value'];
+                    }
+
+                }
+                ;
+
+                return total;
+            },
+            total_fee: function () {
+                var calcObject;
+                calcObject = $scope.calc;
+                var co = $scope.form_a;
+                if (!Object.keys(calcObject.subjects).length) {
+                    return 0;
+                }
+                var per_pers = calcObject.subjects[co.service_name]['price_list']
+                    [co.service_eddition]['price'];
+                var res = 0;
+
+                for (var i of Object.keys($scope.additional)) {
+
+                    if ($scope.additional[i]) {
+                        per_pers = calcObject.add_options[i].price + per_pers;
+
+                        if (calcObject.add_options[i].fixed_price) {
+                            res += calcObject.add_options[i].fixed_price;
+                        }
+                        ;
+                    }
+                }
+                ;
+
+                var min = calcObject.subjects[co.service_name]['min_price'];
+                res += per_pers * co.people_count;
+                if (res < min) {
+                    calcObject.min_order = "(минимальная сумма)";
+                } else {
+                    calcObject.min_order = "";
+                }
+                ;
+                co.price = min < res ? res : min;
+                return min < res ? res : min;
+            },
+            subjects: {},
+            add_options: {},
+
+            min_order: "",
+            people_count: 20,
+            price: 0,
+
+            add_opt: function (name) {
+                if ($scope.additional[name]) {
+                    $scope.additional[name] = true;
+                } else {
+                    $scope.additional[name] = false;
+                }
+
+            },
+            setter: function (name) {
+                $scope.form_a.service_name = name;
+
+
+            },
+
+            serv_select: function (number) {
+                var calcObject;
+                calcObject = $scope.calc;
+                var co = $scope.form_a;
+                var mapper = Object.keys(calcObject.subjects[co.service_name]['price_list']);
+                co.service_eddition = mapper[number];
+            },
+
+        };
+
+        $scope.additional = {};
+        $scope.form_a = {
+            name: '',
+            email: '',
+            phone: '',
+            comment: '',
+            people_count: 30,
+            price: 0,
+            service_name: service_name_kokoc,
+            service_eddition: "econom",
+
+        }
+        $scope.form_b = {
+            name: '',
+            email: '',
+            phone: '',
+            comment: '',
+
+        }
+
+        $scope.stat = function () {
+            var calcObject;
+            calcObject = $scope.calc;
+
+            if (!Object.keys(calcObject.subjects).length) {
+                return 0;
+            }
+            //return window.btoa(JSON.stringify($scope.calc));
+
+            $http({
+                method: 'POST',
+                url: '/amo/',
+                data: $.param({
+                    config: angular.toJson(
+                        [].concat(
+                            $scope.form_a).concat($scope.additional).concat(
+                            $scope.form_b)
+                    )
+                }),//({config:$scope.calc }
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(
+                window.location = "thanks.php"
+            );
+
+
+        };
+
+    });
+
+</script>
+</body>
+</html>

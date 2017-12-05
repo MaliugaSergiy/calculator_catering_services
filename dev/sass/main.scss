@@ -1,0 +1,159 @@
+body {
+  padding: 0;
+  margin: 0;
+
+}
+
+.wr {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+.main_menu_container {
+  width: 100vw;
+  height: 30vh;
+  box-sizing: border-box;
+  display: flex;
+
+}
+
+.main_menu_container .box1 {
+  width: 33.333vw;
+  text-align: center;
+  line-height: 30vh;
+  background-size: cover;
+  background-position: center;
+  transition: 1.5s;
+  cursor: pointer;
+  /*background-attachment: fixed;*/
+
+}
+
+.h3 {
+  margin: 0;
+  padding: 0;
+  line-height: 30vh;
+  font-size: 0.8em;
+  background-color: rgba(0, 0, 0, .7);
+  transition: 0.5s;
+}
+
+.h3 .span {
+  background-color: rgba(255, 255, 255, 0);
+  width: 100%;
+  transition: 0.5s;
+  color: #fff;
+  padding: 25px 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.box1:hover .h3 .span, .box1.active .h3 .span {
+  background-color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+  color: black;
+}
+
+.box1:hover .h3 .span {
+  background-color: rgba(162, 199, 25, 0.5)
+}
+
+.box1.active .h3 .span {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.box1:hover .h3, .box1.active .h3 {
+  background: transparent;
+}
+
+.box1:hover .h3 .span, .box1.active .h3 .span {
+
+}
+
+.box1:hover, .box1.active {
+  width: 100vw;
+}
+
+.main_menu_container .box1:nth-child(1) {
+  background-image: url(http://super-prazdnik.com/upload/iblock/b84/b84fe8e748113a93fcd94b4dc6f4e0cb.jpg);
+}
+
+.main_menu_container .box1:nth-child(2) {
+  background-image: url(http://test2.xor.com.ua/wp-content/uploads/2014/01/20120524_15381.jpg);
+}
+
+.main_menu_container .box1:nth-child(3) {
+  background-image: url(http://womansy.com/wp-content/uploads/2017/01/153.jpg);
+}
+
+.main_menu_container .box1:nth-child(4) {
+  background-image: url(http://laburo.com.ua/wp-content/uploads/2015/03/%D0%93%D1%80%D0%B8%D0%BB%D1%8C-1024x640.jpg);
+}
+
+.main_menu_container .box1:nth-child(5) {
+  background-image: url(http://laburo.com.ua/wp-content/uploads/2015/03/%D0%93%D1%80%D0%B8%D0%BB%D1%8C-1024x640.jpg);
+  color: #000;
+}
+
+section.CalcName {
+  .wr {
+      .line-heading {
+        text-align: center;
+        margin-top: 20px;
+      }
+  }
+}
+section.calcSet {
+  margin-bottom: 50px;
+  .wr {
+    .col-left .item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      .range {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        max-width: 750px;
+        width: 75%;
+        label {
+          margin-bottom: 0px;
+        }
+        input {
+          margin: 10px 0;
+          padding: 5px;
+          font-size: 18px;
+        }
+        ul {
+          list-style-type: none;
+          display: flex;
+          flex-flow: column wrap;
+          margin: 0;
+          max-height: 100px;
+          padding: 0;
+          margin-left: -20px;
+        }
+        li {
+          padding-left: 20px;
+        }
+        span {
+          font-weight: normal;
+        }
+      }
+      .name {
+
+        font-size: 21px;
+        width: 25%;
+      }
+    }
+
+  }
+
+}
+
+
+

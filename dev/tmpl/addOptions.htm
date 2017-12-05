@@ -1,0 +1,7 @@
+<ul class="">
+    <li ng-repeat="(key,val) in calc.add_options">
+        <label class="btn btn-default">
+            <input type="checkbox" autocomplete="off" ng-change="calc.add_opt(key)" ng-model="additional[key]"></input>{{val.name}} - {{val.price}} чел x {{form_a.people_count}} грн = {{val.price * form_a.people_count}} грн
+        </label>
+    </li>
+</ul>

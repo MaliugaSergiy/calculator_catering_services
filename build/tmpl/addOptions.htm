@@ -1,0 +1,11 @@
+<ul class="">
+    <li ng-repeat="(key,val) in calc.add_options">
+        <label class="">
+            <input type="checkbox" autocomplete="off" ng-change="calc.add_opt(key)" ng-model="additional[key]"></input>
+            {{val.name}} - {{val.price || val.fixed_price}} грн
+            <span ng-if="!val.fixed_price"> x {{form_a.people_count}} чел =
+                {{val.fixed_price || val.price * form_a.people_count}} грн</span >
+            <span ng-if="val.fixed_price">(фиксированная цена)</span>
+        </label>
+    </li>
+</ul>

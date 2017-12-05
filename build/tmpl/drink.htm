@@ -1,0 +1,18 @@
+<table class="table table-condensed">
+    <thead>
+    <tr>
+        <td>Напитки</td>
+        <td>миллилитры</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="subject in calc.subjects[form_a.service_name]['price_list'][form_a.service_eddition]['drink']">
+        <td>{{subject.name}}</td>
+        <td>{{ subject.value }}</td>
+    </tr>
+    <tr>
+        <td><strong>Всего</strong></td>
+        <td><strong>{{calc.total_drink()}}</strong></td>
+    </tr>
+    </tbody>
+</table>

@@ -1,0 +1,2235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Кейтеринг Киев от Соль и Перец</title>
+    <meta name="description"
+          content="Кейтеринг в Киеве и области от Соль и Перец. Опытные официанты, чистая форма и вкусная еда. Цена: 127 — 291 грн\чел. Удобный калькулятор стоимости проведения кейтеринга."/>
+    <link href="/img/favicon.ico" rel="icon"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="prefetch" href="/img/fullwidth/3.jpg">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="header-background">
+    <div class="header-container">
+        <div class="row">
+            <div class="col-md-3 logo">
+                <div class="logo-border">
+                    <p>Соль и Перец</p>
+                    <span>Кейтеринг</span>
+                </div>
+            </div>
+            <div class="col-md-6 text-center">
+                <h1 class="main-heading">Кейтеринг в Киеве</h1>
+                <h2 class="sub-heading">Еда и персонал на ваше<br/> мероприятие</h2></div>
+            <div class="col-md-3">
+                <p class="header-phones nomargin"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>(044)
+                    223-64-36</p>
+                <p class="header-phones nomargin">(093) 223-64-36</p>
+                <p class="header-info nomargin"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>Пн-пт
+                    10:00 - 19:00</p>
+                <p class="header-info"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>info@saltandpepper.com.ua
+                </p>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal">Заказать
+                    консультацию
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- <a class="header-test" href="##starttour"><span class="glyphicon glyphicon-chevron-down"></span></a> -->
+</div>
+<div class="calc-background text-center row-padding-bottom">
+    <div class="row row-padding">
+        <div class="col-md-12">
+            <div class="line-heading">
+                <span class="h-line"></span>
+                <p class="calc-heading nomargin" id="calc_anchor">Рассчитайте</p>
+                <span class="h-line"></span>
+            </div>
+            <p class="calc-sub-heading text-center nomargin">Стоимость кейтеринга</p></div>
+    </div>
+    <div id="test-mobile" style="visibility: hidden"></div>
+    <div id="starttour" ng-app="mainApp" ng-controller="calcController" onmouseover="" ng-cloak>
+        <div class="row">
+            <div class="col-md-3 hidden-xs">
+                <h4 class="nomargin-top select-arrow">Выберите формат<br> вашего мероприятия:</h4>
+            </div>
+            <div class="col-md-9" id="calcMenuEvent">
+                <div id="calc_menu" ng-include="'tmpl/main_menu.htm'"></div>
+            </div>
+        </div>
+        <div class="well well-xs col-md-10 col-md-offset-1">
+            <div class="row">
+                <div class="col-md-6" id="calc_quantity">
+                    <div class="col-md-12"><h3>Количество человек</h3></div>
+                    <div class="col-md-12"><input ng-model="form_a.people_count" type="number" slider options="{
+                          from: 1,
+                          to: 300,
+                          step: 1,
+
+                          vertical: false,
+                          limits: true,
+
+                          className: 'custoClass'
+                      }" ng-disabled="disabled"/></div>
+                    <div class="col-md-4 col-md-offset-4" style="margin-top:20px;"><input type="number"
+                                                                                          ng-model="form_a.people_count"/>
+                    </div>
+
+                </div>
+                <div class="col-md-6 no-top-value" id="calc_plan">
+                    <h3>Стоимость на человека, грн</h3>
+
+                    <input ng-model="calc.service_type" ng-change="calc.serv_select(calc.service_type)" type="number"
+                           slider options="{
+                          from: 0,
+                          to: 2,
+                          step: 1,
+
+                          vertical: false,
+                          limits: false,
+
+                          scale: ['эконом','бизнес','премиум'],
+                          className: 'customClass'
+                      }" ng-disabled="disabled"/>
+                    <div class="col-md-12" style="margin-top:30px;"><span style="margin-top:20px;">Выбраный пакет: {{calc.subjects[form_a.service_name]['price_list'][form_a.service_eddition].name}} {{calc.subjects[form_a.service_name]['price_list'][form_a.service_eddition].price}} грн</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <h2>Стоимость {{calc.subjects[form_a.service_name].name}}: <span style="color:orange;">{{calc.total_fee()}} ГРН
+                     </span><span class="minimum-price">{{calc.min_order}}</span></h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Вес блюд и обьем напитков на одну персону</h4>
+                    <div class="well">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div ng-include="'tmpl/main.htm'"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div ng-include="'tmpl/drink.htm'"></div>
+                            </div>
+                            <div class="col-md-4 calc-form" id="calc_form">
+                                <h4>Оформить:</h4>
+                                <form name="req_form">
+
+                                    <input type="text" class="form-control" name="name" ng-model="form_a.name"
+                                           placeholder="Ваше имя" ng-minlength="3" required>
+                                    <br>
+                                    <input type="text" class="form-control" name="phone" ng-model="form_a.phone"
+                                           ui-mask="(999) 999-99-99" ng-pattern="/[0-9]{10}/" required>
+
+                                    <br>
+
+                                    <input type="email" class="form-control" name="email" ng-model="form_a.email"
+                                           placeholder="Ваш e-mail">
+
+                                    <br>
+                                    <input type="text" class="form-control" name="date" ng-model="form_a.date"
+                                           placeholder="Дата мероприятия">
+                                    <br>
+                                    <input type="text" class="form-control" name="comment" ng-model="form_a.comment"
+                                           placeholder="Ваши пожелания">
+
+                                    <br>
+                                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                                        <div class="btn-group" role="group">
+                                            <input type="submit" class="btn btn-warning btn-lg" value="Отправить запрос"
+                                                   ng-disabled="!req_form.$valid" ng-click="stat()"></input>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row row-padding-top">
+    <div class="col-md-12 text-center">
+        <h2 class="calc-faq-heading" id="price_anchor">Что входит в стоимость</h2>
+    </div>
+</div>
+
+<div class="row row-padding-bottom">
+    <div class="col-md-8 col-md-offset-2">
+        <ul class="calc-list">
+            <li>работа обслуживающего персонала</li>
+            <li>вся посуда (бокалы, стаканы, тарелки и т.п.)</li>
+            <li>текстиль</li>
+            <li>оборудование (кофе-машина, соковыжималка, термопот, мангал и т.п.)</li>
+            <li>бесплатная доставка по Киеву</li>
+            <li>уборка после мероприятия</li>
+        </ul>
+    </div>
+</div>
+<div class="row row-padding-bottom">
+    <div class="col-md-12 text-center">
+        <div class="line-heading">
+            <span class="h-line"></span>
+            <h2 class="calc-heading" id="portfolio_anchor">Портфолио</h2>
+            <span class="h-line"></span>
+        </div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs cases" role="tablist">
+            <li role="presentation" class="active"><a href="#barbershop" aria-controls="barbershop" role="tab"
+                                                      data-toggle="tab">Открытие Барбершопа Chop-Chop</a></li>
+            <li role="presentation"><a href="#pioneers" aria-controls="pioneers" role="tab" data-toggle="tab">IT-конференция
+                Pioneers</a></li>
+            <li role="presentation"><a href="#weddingmarianna" aria-controls="weddingmarianna" role="tab"
+                                       data-toggle="tab">Свадьба Марианны и Андрея</a></li>
+            <li role="presentation"><a href="#bigmedia" aria-controls="bigmedia" role="tab" data-toggle="tab">Конференция
+                Big Media Meeting</a></li>
+            <li role="presentation" class="nomargin-left"><a href="#energizer" aria-controls="energizer" role="tab"
+                                                             data-toggle="tab">Energizer Camp</a></li>
+            <li role="presentation"><a href="#tesla" aria-controls="tesla" role="tab" data-toggle="tab">Tesla Camp</a>
+            </li>
+            <li role="presentation"><a href="#orf" aria-controls="orf" role="tab" data-toggle="tab">Октрытие
+                Австрийского Телевидения</a></li>
+            <li role="presentation"><a href="#newbalance" aria-controls="newbalance" role="tab" data-toggle="tab">DobroSale
+                от New Balance</a></li>
+            <li role="presentation"><a href="#sweden" aria-controls="sweden" role="tab" data-toggle="tab">Ланч с послом
+                Швеции</a></li>
+            <li role="presentation" class="nomargin-left"><a href="#arthack" aria-controls="arthack" role="tab"
+                                                             data-toggle="tab">Арт-Хакатон</a></li>
+            <li role="presentation"><a href="#rpr2" aria-controls="rpr2" role="tab" data-toggle="tab">РПР 2 года</a>
+            </li>
+            <li role="presentation"><a href="#weddingolga" aria-controls="weddingolga" role="tab" data-toggle="tab">Свадьба
+                Игоря и Оли</a></li>
+            <li role="presentation"><a href="#lacoste" aria-controls="lacoste" role="tab" data-toggle="tab">Открытие
+                бутика Lacoste</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="barbershop">
+                <div class="row row-padding-bottom row-padding-top">
+                    <div class="col-md-8">
+                        <a href="/img/portfolio/chop-chop/_DSC3990.jpg" data-toggle="lightbox" data-gallery="chop-chop">
+                            <img src="/img/portfolio/chop-chop/_DSC3990.jpg" class="img-responsive margin-auto">
+                        </a>
+                        <div class="row row-padding-top row-padding-bottom">
+                            <a href="/img/portfolio/chop-chop/_DSC3981.jpg" data-toggle="lightbox"
+                               data-gallery="chop-chop" class="col-sm-2">
+                                <img src="/img/portfolio/chop-chop/_DSC3981.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/chop-chop/_DSC4243.jpg" data-toggle="lightbox"
+                               data-gallery="chop-chop" class="col-sm-2">
+                                <img src="/img/portfolio/chop-chop/_DSC4243.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/chop-chop/_DSC4305.jpg" data-toggle="lightbox"
+                               data-gallery="chop-chop" class="col-sm-2">
+                                <img src="/img/portfolio/chop-chop/_DSC4305.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/chop-chop/_DSC4160.jpg" data-toggle="lightbox"
+                               data-gallery="chop-chop" class="col-sm-2">
+                                <img src="/img/portfolio/chop-chop/_DSC4160.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/chop-chop/_DSC4163.jpg" data-toggle="lightbox"
+                               data-gallery="chop-chop" class="col-sm-2">
+                                <img src="/img/portfolio/chop-chop/_DSC4163.jpg" class="img-responsive">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 portfolio-text">
+                        <h3 class="nomargin-top">Открытие барбершопа Chop-Chop</h3>
+                        <p>Дата мероприятия: 19.06.2015</p>
+                        <p>Локация: Chop-Chop на ул. Горького</p>
+                        <p>Количество человек: 300</p>
+                        <p class="nomargin-bottom portfolio-border-bottom">Тип мероприятия: Барбекю</p>
+                        <img class="img-responsive margin-auto" src="/img/portfolio/chop-chop/pavel.png">
+                        <p><i>Все, что вам нужно знать о кейтеринговой компании "Соль и Перец" — это то,
+                            что ребята справляются со своими обязанностями на все 100%.
+                            Очень порадовал менеджмент компании — индивидуальный подход к клиенту и
+                            внимание к деталям мероприятия. Так же порадовал персонал компании, который
+                            работает слажено, быстро и без каких-либо косяков.
+                            Спасибо за хорошую работу.
+                        </i>
+                        </p>
+                        <p class="text-right nomargin-bottom "><strong>Павел</strong></p>
+                        <p class="text-right">Организатор</p>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="pioneers">
+                <div class="row row-padding-bottom row-padding-top">
+                    <div class="col-md-8">
+                        <a href="/img/portfolio/eltrino/_DSC5835.jpg" data-toggle="lightbox" data-gallery="pioneers">
+                            <img src="/img/portfolio/eltrino/_DSC5835.jpg" class="img-responsive margin-auto">
+                        </a>
+                        <div class="row row-padding-top row-padding-bottom">
+                            <a href="/img/portfolio/eltrino/_DSC5288.jpg" data-toggle="lightbox" data-gallery="pioneers"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/eltrino/_DSC5288.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/eltrino/_DSC5811.jpg" data-toggle="lightbox" data-gallery="pioneers"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/eltrino/_DSC5811.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/eltrino/_DSC5741.jpg" data-toggle="lightbox" data-gallery="pioneers"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/eltrino/_DSC5741.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/eltrino/_DSC5827.jpg" data-toggle="lightbox" data-gallery="pioneers"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/eltrino/_DSC5827.jpg" class="img-responsive">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 portfolio-text">
+                        <h3 class="nomargin-top">IT-конференция Pioneers Festival</h3>
+                        <p>Дата мероприятия: 27.06.2015</p>
+                        <p>Локация: Галерея М17</p>
+                        <p>Количество человек: 120</p>
+                        <p class="nomargin-bottom portfolio-border-bottom">Тип мероприятия: Фуршет, кофе-пауза</p>
+                        <img class="img-responsive margin-auto" src="/img/portfolio/eltrino/ilona.png">
+                        <p><i>Хочу выразить огромную благодарность за предоставление услуг кейтеринга и партнерскую
+                            поддержку на PioneersKyiv.
+                            Вкусная еда, вышколенный персонал, оперативное реагирование на просьбы и отменное выполнение
+                            поставленных задач - это про "Соль И Перец".
+                            Ребята спасибо за европейское качество и отзывчивость!</i>
+                        </p>
+                        <p class="text-right nomargin-bottom "><strong>Илона</strong></p>
+                        <p class="text-right">HR/AM, Eltrino</p>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="bigmedia">
+                <div class="row row-padding-bottom row-padding-top">
+                    <div class="col-md-8">
+                        <a href="/img/portfolio/big-media/_DSC6130.jpg" data-toggle="lightbox" data-gallery="bigmedia">
+                            <img src="/img/portfolio/big-media/_DSC6130.jpg" class="img-responsive margin-auto">
+                        </a>
+                        <div class="row row-padding-top row-padding-bottom">
+                            <a href="/img/portfolio/big-media/_DSC6128.jpg" data-toggle="lightbox"
+                               data-gallery="bigmedia" class="col-sm-2">
+                                <img src="/img/portfolio/big-media/_DSC6128.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/big-media/_DSC6248.jpg" data-toggle="lightbox"
+                               data-gallery="bigmedia" class="col-sm-2">
+                                <img src="/img/portfolio/big-media/_DSC6248.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/big-media/_DSC6322.jpg" data-toggle="lightbox"
+                               data-gallery="bigmedia" class="col-sm-2">
+                                <img src="/img/portfolio/big-media/_DSC6322.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/big-media/_DSC6132.jpg" data-toggle="lightbox"
+                               data-gallery="bigmedia" class="col-sm-2">
+                                <img src="/img/portfolio/big-media/_DSC6132.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/big-media/_DSC6196.jpg" data-toggle="lightbox"
+                               data-gallery="bigmedia" class="col-sm-2">
+                                <img src="/img/portfolio/big-media/_DSC6196.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/big-media/_DSC6227.jpg" data-toggle="lightbox"
+                               data-gallery="bigmedia" class="col-sm-2">
+                                <img src="/img/portfolio/big-media/_DSC6227.jpg" class="img-responsive">
+                            </a>
+                        </div>
+                        <div class="row row-padding-top row-padding-bottom">
+                            <a href="/img/portfolio/big-media/_DSC6254.jpg" data-toggle="lightbox"
+                               data-gallery="bigmedia" class="col-sm-2">
+                                <img src="/img/portfolio/big-media/_DSC6254.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/big-media/_DSC6265.jpg" data-toggle="lightbox"
+                               data-gallery="bigmedia" class="col-sm-2">
+                                <img src="/img/portfolio/big-media/_DSC6265.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/big-media/_DSC6290.jpg" data-toggle="lightbox"
+                               data-gallery="bigmedia" class="col-sm-2">
+                                <img src="/img/portfolio/big-media/_DSC6290.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/big-media/_DSC6295.jpg" data-toggle="lightbox"
+                               data-gallery="bigmedia" class="col-sm-2">
+                                <img src="/img/portfolio/big-media/_DSC6295.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/big-media/_DSC6350.jpg" data-toggle="lightbox"
+                               data-gallery="bigmedia" class="col-sm-2">
+                                <img src="/img/portfolio/big-media/_DSC6350.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/big-media/_DSC6332.jpg" data-toggle="lightbox"
+                               data-gallery="bigmedia" class="col-sm-2">
+                                <img src="/img/portfolio/big-media/_DSC6332.jpg" class="img-responsive">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 portfolio-text">
+                        <h3 class="nomargin-top">Конференция Big Media Meeting by PLATFORMA</h3>
+                        <p>Дата мероприятия: 05.07.2015</p>
+                        <p>Локация: Fedoriv Hub</p>
+                        <p>Количество человек: 215</p>
+                        <p>Тип мероприятия: Фуршет, кофе-пауза</p>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="energizer">
+                <div class="row row-padding-bottom row-padding-top">
+                    <div class="col-md-8">
+                        <a href="/img/portfolio/energizer/1.jpg" data-toggle="lightbox" data-gallery="energizer">
+                            <img src="/img/portfolio/energizer/1.jpg" class="img-responsive margin-auto">
+                        </a>
+                        <div class="row row-padding-top row-padding-bottom">
+                            <a href="/img/portfolio/energizer/2.jpg" data-toggle="lightbox" data-gallery="energizer"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/energizer/2.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/energizer/3.jpg" data-toggle="lightbox" data-gallery="energizer"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/energizer/3.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/energizer/5.jpg" data-toggle="lightbox" data-gallery="energizer"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/energizer/5.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/energizer/9.jpg" data-toggle="lightbox" data-gallery="energizer"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/energizer/9.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/energizer/10.jpg" data-toggle="lightbox" data-gallery="energizer"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/energizer/10.jpg" class="img-responsive">
+                            </a>
+                        </div>
+                        <div class="row row-padding-top row-padding-bottom">
+                            <a href="/img/portfolio/energizer/7.jpg" data-toggle="lightbox" data-gallery="energizer"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/energizer/7.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/energizer/6.jpg" data-toggle="lightbox" data-gallery="energizer"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/energizer/6.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/energizer/4.jpg" data-toggle="lightbox" data-gallery="energizer"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/energizer/4.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/energizer/8.jpg" data-toggle="lightbox" data-gallery="energizer"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/energizer/8.jpg" class="img-responsive">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 portfolio-text">
+                        <h3 class="nomargin-top">Летний лагерь Energizer Camp</h3>
+                        <p>Дата мероприятия: 16.07 - 03.08 2015</p>
+                        <p>Локация: НПП «Бужский Гард»</p>
+                        <p>Количество человек: 215</p>
+                        <p class="nomargin-bottom portfolio-border-bottom">Тип мероприятия: Фуршет, кофе-пауза</p>
+                        <img class="img-responsive margin-auto" src="/img/portfolio/energizer/oleg.png">
+                        <p><i>Компанія "Сіль і перець" мала дуже добрі рекомендації від декількох
+                            моїх знайомих. На етапі попереднього обговорення
+                            організації харчування, узгодження меню і подачі їжі
+                            швидко прийняли оптимальне рішення. Всі технічні моменти вирішувалися
+                            оперативно і чітко як було домовлено. Команда колоритна і надзвичайно
+                            злагоджено працювала. Все подавалося вчасно і завжди смакувало. Рекомендую!
+                        </i>
+                        </p>
+                        <p class="text-right nomargin-bottom "><strong>Олег, комендант табору</strong></p>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="weddingmarianna">
+                <div class="row row-padding-bottom row-padding-top">
+                    <div class="col-md-8">
+                        <a href="/img/portfolio/weddingmarianna/1.jpg" data-toggle="lightbox"
+                           data-gallery="weddingmarianna">
+                            <img src="/img/portfolio/weddingmarianna/1.jpg" class="img-responsive margin-auto">
+                        </a>
+                        <div class="row row-padding-top row-padding-bottom">
+                            <a href="/img/portfolio/weddingmarianna/2.jpg" data-toggle="lightbox"
+                               data-gallery="weddingmarianna" class="col-sm-2">
+                                <img src="/img/portfolio/weddingmarianna/2.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/weddingmarianna/3.jpg" data-toggle="lightbox"
+                               data-gallery="weddingmarianna" class="col-sm-2">
+                                <img src="/img/portfolio/weddingmarianna/3.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/weddingmarianna/4.jpg" data-toggle="lightbox"
+                               data-gallery="weddingmarianna" class="col-sm-2">
+                                <img src="/img/portfolio/weddingmarianna/4.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/weddingmarianna/5.jpg" data-toggle="lightbox"
+                               data-gallery="weddingmarianna" class="col-sm-2">
+                                <img src="/img/portfolio/weddingmarianna/5.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/weddingmarianna/6.jpg" data-toggle="lightbox"
+                               data-gallery="weddingmarianna" class="col-sm-2">
+                                <img src="/img/portfolio/weddingmarianna/6.jpg" class="img-responsive">
+                            </a>
+                        </div>
+                        <div class="row row-padding-top row-padding-bottom">
+                            <a href="/img/portfolio/weddingmarianna/8.jpg" data-toggle="lightbox"
+                               data-gallery="weddingmarianna" class="col-sm-2">
+                                <img src="/img/portfolio/weddingmarianna/8.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/weddingmarianna/9.jpg" data-toggle="lightbox"
+                               data-gallery="weddingmarianna" class="col-sm-2">
+                                <img src="/img/portfolio/weddingmarianna/9.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/weddingmarianna/10.jpg" data-toggle="lightbox"
+                               data-gallery="weddingmarianna" class="col-sm-2">
+                                <img src="/img/portfolio/weddingmarianna/10.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/weddingmarianna/7.jpg" data-toggle="lightbox"
+                               data-gallery="weddingmarianna" class="col-sm-2">
+                                <img src="/img/portfolio/weddingmarianna/7.jpg" class="img-responsive">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 portfolio-text">
+                        <h3 class="nomargin-top">Свадьба Марианны и Андрея</h3>
+                        <p>Дата мероприятия: 05.09.2015</p>
+                        <p>Локация: Частный дом</p>
+                        <p>Количество человек: 70</p>
+                        <p class="nomargin-bottom portfolio-border-bottom">Тип мероприятия: Банкет, Фуршет</p>
+                        <img class="img-responsive margin-auto" src="/img/portfolio/weddingmarianna/marianna.png">
+                        <p><i>Команда "Соль и перец" заслужила"черный пояс" мастерства,
+                            проявив себя в форс-мажорных обстоятельствах, когда нужно было быстро
+                            и эффективно адаптироваться под изменяющиеся обстоятельства
+                            и при этом без потери в качестве.
+                            Подход к клиенту, внимательность и терпение, гибкость и профессионализм,
+                            кухня, подача, обслуживающий персонал - спасибо за все!</i>
+                        </p>
+                        <p class="text-right nomargin-bottom "><strong>Марианна</strong></p>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="tesla">
+                <div class="row row-padding-bottom row-padding-top">
+                    <div class="col-md-8">
+                        <a href="/img/portfolio/tesla/0.jpg" data-toggle="lightbox" data-gallery="tesla">
+                            <img src="/img/portfolio/tesla/0.jpg" class="img-responsive margin-auto">
+                        </a>
+                        <div class="row row-padding-top row-padding-bottom">
+                            <a href="/img/portfolio/tesla/1.jpg" data-toggle="lightbox" data-gallery="tesla"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/tesla/1.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/tesla/3.jpg" data-toggle="lightbox" data-gallery="tesla"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/tesla/3.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/tesla/4.jpg" data-toggle="lightbox" data-gallery="tesla"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/tesla/4.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/tesla/5.jpg" data-toggle="lightbox" data-gallery="tesla"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/tesla/5.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/tesla/6.jpg" data-toggle="lightbox" data-gallery="tesla"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/tesla/6.jpg" class="img-responsive">
+                            </a>
+                        </div>
+                        <div class="row row-padding-top row-padding-bottom">
+                            <a href="/img/portfolio/tesla/2.jpg" data-toggle="lightbox" data-gallery="tesla"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/tesla/2.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/tesla/7.jpg" data-toggle="lightbox" data-gallery="tesla"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/tesla/7.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/tesla/8.jpg" data-toggle="lightbox" data-gallery="tesla"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/tesla/8.jpg" class="img-responsive">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 portfolio-text">
+                        <h3 class="nomargin-top">Конференция Tesla Camp</h3>
+                        <p>Дата мероприятия: 26-27.09.2015</p>
+                        <p>Локация: T Shaped Crew</p>
+                        <p>Количество человек: 150</p>
+                        <p class="nomargin-bottom portfolio-border-bottom">Тип мероприятия: Фуршет, кофе-пауза</p>
+                        <img class="img-responsive margin-auto" src="/img/portfolio/tesla/olga_green.png">
+                        <p><i>Компанія "Сіль та перець" - це професіоналізм в чистому вигляді.
+                            Організація кейтерінгу пройшла на високому рівні.
+                            В процесі підготовки були враховані всі наші побажання та зауваження щодо меню.
+                            Смачні страви, приємний персонал та своєчасна подача додали дружньої
+                            атмосфери конференції.
+                            Окремо хочу подякувати Валентину за оперативність та мобільність,
+                            збільшення кількості учасників не вплинуло на якість кейтерінгу.</i>
+                        </p>
+                        <p class="text-right nomargin-bottom "><strong>Ольга Трутен, GreenCubator</strong></p>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="orf">
+                <div class="row row-padding-bottom row-padding-top">
+                    <div class="col-md-8">
+                        <a href="/img/portfolio/orf/1.jpg" data-toggle="lightbox" data-gallery="orf">
+                            <img src="/img/portfolio/orf/1.jpg" class="img-responsive margin-auto">
+                        </a>
+                        <div class="row row-padding-top row-padding-bottom">
+                            <a href="/img/portfolio/orf/2.jpg" data-toggle="lightbox" data-gallery="orf"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/orf/2.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/orf/3.jpg" data-toggle="lightbox" data-gallery="orf"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/orf/3.jpg" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/orf/4.jpg" data-toggle="lightbox" data-gallery="orf"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/orf/4.jpg" class="img-responsive">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 portfolio-text">
+                        <h3 class="nomargin-top">Открытие Австрийского телевидения в Украине</h3>
+                        <p>Дата мероприятия: 11.09.2015</p>
+                        <p>Локация: Офис ORF</p>
+                        <p>Количество человек: 55</p>
+                        <p>Тип мероприятия: Фуршет</p>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="newbalance">
+                <div class="row row-padding-bottom row-padding-top">
+                    <div class="col-md-8">
+                        <a href="/img/portfolio/newbalance/_DSC0195-1.png" data-toggle="lightbox"
+                           data-gallery="newbalance">
+                            <img src="/img/portfolio/newbalance/_DSC0195-1.png" class="img-responsive margin-auto">
+                        </a>
+                        <div class="row row-padding-top row-padding-bottom">
+                            <a href="/img/portfolio/newbalance/_DSC0228-1.png" data-toggle="lightbox"
+                               data-gallery="newbalance" class="col-sm-2">
+                                <img src="/img/portfolio/newbalance/_DSC0228-1.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/newbalance/_DSC0236-5.png" data-toggle="lightbox"
+                               data-gallery="newbalance" class="col-sm-2">
+                                <img src="/img/portfolio/newbalance/_DSC0236-5.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/newbalance/_DSC0250-7.png" data-toggle="lightbox"
+                               data-gallery="newbalance" class="col-sm-2">
+                                <img src="/img/portfolio/newbalance/_DSC0250-7.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/newbalance/_DSC0302-3.png" data-toggle="lightbox"
+                               data-gallery="newbalance" class="col-sm-2">
+                                <img src="/img/portfolio/newbalance/_DSC0302-3.png" class="img-responsive">
+                            </a>
+                        </div>
+                        <div class="row row-padding-top row-padding-bottom">
+                            <a href="/img/portfolio/newbalance/_DSC0338-4.png" data-toggle="lightbox"
+                               data-gallery="newbalance" class="col-sm-2">
+                                <img src="/img/portfolio/newbalance/_DSC0338-4.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/newbalance/_DSC0355-5.png" data-toggle="lightbox"
+                               data-gallery="newbalance" class="col-sm-2">
+                                <img src="/img/portfolio/newbalance/_DSC0355-5.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/newbalance/_DSC0442-15.png" data-toggle="lightbox"
+                               data-gallery="newbalance" class="col-sm-2">
+                                <img src="/img/portfolio/newbalance/_DSC0442-15.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/newbalance/IMG_20160223_150014-6.png" data-toggle="lightbox"
+                               data-gallery="newbalance" class="col-sm-2">
+                                <img src="/img/portfolio/newbalance/IMG_20160223_150014-6.png" class="img-responsive">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 portfolio-text">
+                        <h3 class="nomargin-top">Доброsale от New Balance</h3>
+                        <p>Дата мероприятия: 23.02.2016</p>
+                        <p>Локация: ТРЦ Ocean Plaza</p>
+                        <p>Количество человек: 50</p>
+                        <p class="nomargin-bottom portfolio-border-bottom">Тип мероприятия: Фуршет</p>
+                        <img class="img-responsive margin-auto" src="/img/portfolio/newbalance/elena_boyko.png">
+                        <p><i>В нескольких словах: если Вы не хотите думать
+                            о вопросах еды, фуршета, кейтеринга - тогда Вам
+                            в "Соль и перец". Все ваши вопросы решат
+                            за Вас ребята. Вам остается только наслаждаться
+                            мероприятием. Все остальное за вас сделаю и продумают
+                            до мельчайших подробностей сотрудник "Соль и перец".
+                            Мы рекомендуем</i></p>
+                        <p class="text-right nomargin-bottom "><strong>Елена Бойко</strong></p>
+                        <p class="text-right">Директор по маркетингу</p>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="sweden">
+                <div class="row row-padding-bottom row-padding-top">
+                    <div class="col-md-8">
+                        <a href="/img/portfolio/sweden/_DSC0640-5.png" data-toggle="lightbox" data-gallery="sweden">
+                            <img src="/img/portfolio/sweden/_DSC0640-5.png" class="img-responsive margin-auto">
+                        </a>
+                        <div class="row row-padding-top row-padding-bottom">
+                            <a href="/img/portfolio/sweden/_DSC0866-22.png" data-toggle="lightbox" data-gallery="sweden"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/sweden/_DSC0866-22.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/sweden/_DSC0851-21.png" data-toggle="lightbox" data-gallery="sweden"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/sweden/_DSC0851-21.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/sweden/_DSC0677-9.png" data-toggle="lightbox" data-gallery="sweden"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/sweden/_DSC0677-9.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/sweden/_DSC0609-3-2.png" data-toggle="lightbox"
+                               data-gallery="sweden" class="col-sm-2">
+                                <img src="/img/portfolio/sweden/_DSC0609-3-2.png" class="img-responsive">
+                            </a>
+                        </div>
+                        <div class="row row-padding-top row-padding-bottom">
+                            <a href="/img/portfolio/sweden/_DSC0729-10.png" data-toggle="lightbox" data-gallery="sweden"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/sweden/_DSC0729-10.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/sweden/_DSC0645-6.png" data-toggle="lightbox" data-gallery="sweden"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/sweden/_DSC0645-6.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/sweden/_DSC0616-4.png" data-toggle="lightbox" data-gallery="sweden"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/sweden/_DSC0616-4.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/sweden/_DSC0599-1-2.png" data-toggle="lightbox"
+                               data-gallery="sweden" class="col-sm-2">
+                                <img src="/img/portfolio/sweden/_DSC0599-1-2.png" class="img-responsive">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 portfolio-text">
+                        <h3 class="nomargin-top">Ланч с послом Швеции</h3>
+                        <p>Дата мероприятия: 22.03.2016</p>
+                        <p>Локация: Дом учителя</p>
+                        <p>Количество человек: 60</p>
+                        <p class="nomargin-bottom portfolio-border-bottom">Тип мероприятия: Фуршет</p>
+                        <img class="img-responsive margin-auto" src="/img/portfolio/sweden/elena_kharchenko.png">
+                        <p><i>Увага до замовника і його потреб,
+                            гнучкість і швидка реакція на зміни й
+                            уточнення — відмінно! Поєднання ціна-якість — супер!
+                            Їжа — дуже смачна, максимально виконано вимогу
+                            щодо органічності і локальності продуктів
+                            (як ми були здивовані українським тофу),
+                            гарно оформлена роздача. Робота офіціантів — відмінна!
+                            <br><br>Оформлення фуршету у стилі "еко"
+                            заслуговує особливої уваги: у офіціантів
+                            були прикріплені до сорочок красиві зелені
+                            букетики, на столах — квіти, а також "газони"
+                            у видовжених горщиках, в які були увіткнені
+                            власноруч зроблені маленькі паперові сонячні вітряки.
+                        </i></p>
+                        <p class="text-right nomargin-bottom "><strong>Олена Харченко</strong></p>
+                        <p class="text-right">медіа-координаторка проекту "Освіта для сталого розвитку в дії"</p>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="arthack">
+                <div class="row row-padding-bottom row-padding-top">
+                    <div class="col-md-8">
+                        <a href="/img/portfolio/arthack/main.png" data-toggle="lightbox" data-gallery="arthack">
+                            <img src="/img/portfolio/arthack/main.png" class="img-responsive margin-auto">
+                        </a>
+                        <div class="row row-padding-top row-padding-bottom">
+                            <a href="/img/portfolio/arthack/_DSC0011-4.png" data-toggle="lightbox"
+                               data-gallery="arthack" class="col-sm-2">
+                                <img src="/img/portfolio/arthack/_DSC0011-4.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/arthack/_DSC0048-7.png" data-toggle="lightbox"
+                               data-gallery="arthack" class="col-sm-2">
+                                <img src="/img/portfolio/arthack/_DSC0048-7.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/arthack/_DSC0052-8.png" data-toggle="lightbox"
+                               data-gallery="arthack" class="col-sm-2">
+                                <img src="/img/portfolio/arthack/_DSC0052-8.png" class="img-responsive">
+                            </a>
+                        </div>
+                        <div class="row row-padding-top row-padding-bottom">
+                            <a href="/img/portfolio/arthack/_DSC0004-2.png" data-toggle="lightbox"
+                               data-gallery="arthack" class="col-sm-2">
+                                <img src="/img/portfolio/arthack/_DSC0004-2.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/arthack/_DSC0019-5.png" data-toggle="lightbox"
+                               data-gallery="arthack" class="col-sm-2">
+                                <img src="/img/portfolio/arthack/_DSC0019-5.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/arthack/_DSC0022-6.png" data-toggle="lightbox"
+                               data-gallery="arthack" class="col-sm-2">
+                                <img src="/img/portfolio/arthack/_DSC0022-6.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/arthack/_DSC0076-11.png" data-toggle="lightbox"
+                               data-gallery="arthack" class="col-sm-2">
+                                <img src="/img/portfolio/arthack/_DSC0076-11.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/arthack/_DSC0080-12.png" data-toggle="lightbox"
+                               data-gallery="arthack" class="col-sm-2">
+                                <img src="/img/portfolio/arthack/_DSC0080-12.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/arthack/_DSC0106-1.png" data-toggle="lightbox"
+                               data-gallery="arthack" class="col-sm-2">
+                                <img src="/img/portfolio/arthack/_DSC0106-1.png" class="img-responsive">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 portfolio-text">
+                        <h3 class="nomargin-top">Арт-хакатон</h3>
+                        <p>Дата мероприятия: 23 - 24.04.2016</p>
+                        <p>Локация: T Shaped Crew</p>
+                        <p>Количество человек: 70</p>
+                        <p class="nomargin-bottom portfolio-border-bottom">Тип мероприятия: Фуршет, Барбекю,
+                            Кофе-пауза</p>
+                        <img class="img-responsive margin-auto" src="/img/portfolio/arthack/anastasiia_parafeniuk.png">
+                        <p><i>Заказывали услуги кейтеринга Соль и Перец
+                            на арт-хакатон "Культурный код міста" - 70 человек,
+                            которые собираются вместе и активно умственно работают 2 суток.
+                            Нас всех очень вкусно и вовремя кормили, учитывая интересы вегетарианцев,
+                            постящихся, мясоедов, а также все наши организаторские прихоти
+                            (смузи-брейк, барбекю). Хакатонщики подходили и высказывали
+                            множество позитивных отзывов о еде и сервисе.
+                            Уже начали активно рекомендовать вас всем вокруг!</i></p>
+                        <p class="text-right nomargin-bottom "><strong>Анастасия Парафенюк</strong></p>
+                        <p class="text-right">Garage Gang</p>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="rpr2">
+                <div class="row row-padding-bottom row-padding-top">
+                    <div class="col-md-8">
+                        <a href="/img/portfolio/rpr2/main.png" data-toggle="lightbox" data-gallery="rpr2">
+                            <img src="/img/portfolio/rpr2/main.png" class="img-responsive margin-auto">
+                        </a>
+                        <div class="row row-padding-top row-padding-bottom">
+                            <a href="/img/portfolio/rpr2/hor_eda0.png" data-toggle="lightbox" data-gallery="rpr2"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/rpr2/hor_eda0.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/rpr2/hor_eda1.png" data-toggle="lightbox" data-gallery="rpr2"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/rpr2/hor_eda1.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/rpr2/hor_eda2.png" data-toggle="lightbox" data-gallery="rpr2"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/rpr2/hor_eda2.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/rpr2/hor_eda3.png" data-toggle="lightbox" data-gallery="rpr2"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/rpr2/hor_eda3.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/rpr2/hor_eda4.png" data-toggle="lightbox" data-gallery="rpr2"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/rpr2/hor_eda4.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/rpr2/hor_eda5.png" data-toggle="lightbox" data-gallery="rpr2"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/rpr2/hor_eda5.png" class="img-responsive">
+                            </a>
+                        </div>
+                        <div class="row row-padding-top row-padding-bottom">
+                            <a href="/img/portfolio/rpr2/people1.png" data-toggle="lightbox" data-gallery="rpr2"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/rpr2/people1.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/rpr2/people2.png" data-toggle="lightbox" data-gallery="rpr2"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/rpr2/people2.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/rpr2/people3.png" data-toggle="lightbox" data-gallery="rpr2"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/rpr2/people3.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/rpr2/people4.png" data-toggle="lightbox" data-gallery="rpr2"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/rpr2/people4.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/rpr2/people5.png" data-toggle="lightbox" data-gallery="rpr2"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/rpr2/people5.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/rpr2/people6.png" data-toggle="lightbox" data-gallery="rpr2"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/rpr2/people6.png" class="img-responsive">
+                            </a>
+                        </div>
+                        <div class="row row-padding-top row-padding-bottom">
+                            <a href="/img/portfolio/rpr2/vert_eda.png" data-toggle="lightbox" data-gallery="rpr2"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/rpr2/vert_eda.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/rpr2/vert_eda2.png" data-toggle="lightbox" data-gallery="rpr2"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/rpr2/vert_eda2.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/rpr2/vert_eda3.png" data-toggle="lightbox" data-gallery="rpr2"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/rpr2/vert_eda3.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/rpr2/vert_eda4.png" data-toggle="lightbox" data-gallery="rpr2"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/rpr2/vert_eda4.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/rpr2/vert_eda5.png" data-toggle="lightbox" data-gallery="rpr2"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/rpr2/vert_eda5.png" class="img-responsive">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 portfolio-text">
+                        <h3 class="nomargin-top">Реанімаційний Пакет Реформ</h3>
+                        <p>Дата мероприятия: 15.03.2016</p>
+                        <p>Локация: Media Hub</p>
+                        <p>Количество человек: 120</p>
+                        <p class="nomargin-bottom portfolio-border-bottom">Тип мероприятия: Фуршет</p>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="weddingolga">
+                <div class="row row-padding-bottom row-padding-top">
+                    <div class="col-md-8">
+                        <a href="/img/portfolio/weddingolga/main.png" data-toggle="lightbox" data-gallery="weddingolga">
+                            <img src="/img/portfolio/weddingolga/main.png" class="img-responsive margin-auto">
+                        </a>
+                        <div class="row row-padding-top row-padding-bottom">
+                            <a href="/img/portfolio/weddingolga/hor_eda1.png" data-toggle="lightbox"
+                               data-gallery="weddingolga" class="col-sm-2">
+                                <img src="/img/portfolio/weddingolga/hor_eda1.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/weddingolga/hor_eda2.png" data-toggle="lightbox"
+                               data-gallery="weddingolga" class="col-sm-2">
+                                <img src="/img/portfolio/weddingolga/hor_eda2.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/weddingolga/hor_eda3.png" data-toggle="lightbox"
+                               data-gallery="weddingolga" class="col-sm-2">
+                                <img src="/img/portfolio/weddingolga/hor_eda3.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/weddingolga/hor_eda4.png" data-toggle="lightbox"
+                               data-gallery="weddingolga" class="col-sm-2">
+                                <img src="/img/portfolio/weddingolga/hor_eda4.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/weddingolga/hor_eda5.png" data-toggle="lightbox"
+                               data-gallery="weddingolga" class="col-sm-2">
+                                <img src="/img/portfolio/weddingolga/hor_eda5.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/weddingolga/hor_eda6.png" data-toggle="lightbox"
+                               data-gallery="weddingolga" class="col-sm-2">
+                                <img src="/img/portfolio/weddingolga/hor_eda6.png" class="img-responsive">
+                            </a>
+                        </div>
+                        <div class="row row-padding-top row-padding-bottom">
+                            <a href="/img/portfolio/weddingolga/vert1.png" data-toggle="lightbox"
+                               data-gallery="weddingolga" class="col-sm-2">
+                                <img src="/img/portfolio/weddingolga/vert1.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/weddingolga/vert2.png" data-toggle="lightbox"
+                               data-gallery="weddingolga" class="col-sm-2">
+                                <img src="/img/portfolio/weddingolga/vert2.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/weddingolga/vert3.png" data-toggle="lightbox"
+                               data-gallery="weddingolga" class="col-sm-2">
+                                <img src="/img/portfolio/weddingolga/vert3.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/weddingolga/vert4.png" data-toggle="lightbox"
+                               data-gallery="weddingolga" class="col-sm-2">
+                                <img src="/img/portfolio/weddingolga/vert4.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/weddingolga/vert5.png" data-toggle="lightbox"
+                               data-gallery="weddingolga" class="col-sm-2">
+                                <img src="/img/portfolio/weddingolga/vert5.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/weddingolga/vert6.png" data-toggle="lightbox"
+                               data-gallery="weddingolga" class="col-sm-2">
+                                <img src="/img/portfolio/weddingolga/vert6.png" class="img-responsive">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 portfolio-text">
+                        <h3 class="nomargin-top">Свадьба Игоря и Оли</h3>
+                        <p>Дата мероприятия: 09.10.2015</p>
+                        <p>Локация: Сквот "Окно"</p>
+                        <p>Количество человек: 20</p>
+                        <p class="nomargin-bottom portfolio-border-bottom">Тип мероприятия: Фуршет</p>
+                        <img class="img-responsive margin-auto" src="/img/portfolio/weddingolga/olga_sytnik.png">
+                        <p><i>Захотілося мені літнього свята восени.<br>Вуличне весілля при +5? - крутили більшість біля
+                            скроні.
+                            Більшість так, але не команда кетерінгу Соль и Перец.
+                            Саме завдяки їм вдалося організувати надзвичайно душевну атмосферу у кафе-сквоті,
+                            який захований у звичайному київському дворі.
+                            <br><br>У скромний фуршет їм вдалося органічно вписати м'ясні,
+                            рибні, морепродуктні, вегетаріанські і навіть сироїдні страви.
+                            Еко-тему "Соль и Перец" перетворили в цікавий концепт:
+                            подача блюд з деревяними шпикачками
+                            і в крафті виглядала просто блискуче.
+                            Температуру "на борту" вдалося перемогти ідеальними поєднаннями
+                            імбирно-мятного чаю і какао зі спеціями та маршмеллоу.
+                            <br><br>
+                            І при цьому, що найголовніше, все було чітко,
+                            злагоджено, вчасно і без затримок…
+                            Навіть не так! Все було ідеально, як і хотілося в той день.
+                            Дякую Валентину і команді кетерінгу "Соль и Перец". Ви кращі!
+                        </i></p>
+                        <p class="text-right nomargin-bottom "><strong>Ольга Сытник</strong></p>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="lacoste">
+                <div class="row row-padding-bottom row-padding-top">
+                    <div class="col-md-8">
+                        <a href="/img/portfolio/lacoste/main.png" data-toggle="lightbox" data-gallery="lacoste">
+                            <img src="/img/portfolio/lacoste/main.png" class="img-responsive margin-auto">
+                        </a>
+                        <div class="row row-padding-top row-padding-bottom">
+                            <a href="/img/portfolio/lacoste/lacoste1.png" data-toggle="lightbox" data-gallery="lacoste"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/lacoste/lacoste1.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/lacoste/lacoste2.png" data-toggle="lightbox" data-gallery="lacoste"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/lacoste/lacoste2.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/lacoste/lacoste3.png" data-toggle="lightbox" data-gallery="lacoste"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/lacoste/lacoste3.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/lacoste/lacoste4.png" data-toggle="lightbox" data-gallery="lacoste"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/lacoste/lacoste4.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/lacoste/lacoste5.png" data-toggle="lightbox" data-gallery="lacoste"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/lacoste/lacoste5.png" class="img-responsive">
+                            </a>
+                            <a href="/img/portfolio/lacoste/lacoste6.png" data-toggle="lightbox" data-gallery="lacoste"
+                               class="col-sm-2">
+                                <img src="/img/portfolio/lacoste/lacoste6.png" class="img-responsive">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 portfolio-text">
+                        <h3 class="nomargin-top">Открытие флагманского бутика Lacoste</h3>
+                        <p>Дата мероприятия: 19.04.2016</p>
+                        <p>Локация: ТРЦ Ocean Plaza</p>
+                        <p>Количество человек: 50</p>
+                        <p class="nomargin-bottom portfolio-border-bottom">Тип мероприятия: праздничный коктейль</p>
+                        <img class="img-responsive margin-auto" src="/img/portfolio/lacoste/nataly.png">
+                        <p><i>С компанией "Соль и перец" у нас не первое мероприятие
+                            и уверена, что далеко не последнее.
+                            Нам нравится все - удобно, профессионально, и конечно же, вкусно.
+                        </i></p>
+                        <p class="text-right nomargin-bottom "><strong>Наталия Березенская</strong></p>
+                        <p class="text-right">Директор, FASHION-PR</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="reviews-background">
+    <div class="row row-padding">
+        <div class="col-md-12">
+            <div class="line-heading text-center">
+                <span class="h-line"></span>
+                <p class="calc-heading" id="reviews_anchor">Отзывы</p>
+                <span class="h-line"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 review">
+            <div class="col-md-3 review-portrait">
+                <img class="img-responsive" src="/img/quotes/alla.png"/>
+            </div>
+            <div class="col-md-9">
+                <p class="review-text">"Мы с коллегами решили активно отпраздновать День юриста.<br>
+                    Возникла необходимость в кейтеринге. Прочитав положительные отзывы о
+                    компании «Соль и Перец», решили попробовать и не ошиблись.<br>
+                    Организация на высшем уровне: приехали вовремя, обслуживали качественно,
+                    а ароматный утренний кофе в подарок, был довольно приятным сюрпризом.
+                    Стоит отметить также хороший выбор меню, эстетическое оформление блюд,
+                    прекрасную сервировку.<br>
+                    Продукты (овощи, мясо, рыба) были свежими и качественно приготовленными.
+                    Все блюда были настолько вкусными, что нам хотелось их употреблять,
+                    не останавливаясь, забыв обо всяких там ограничениях и диетах.
+                    За уху, шашлыки и рыбу на мангале – особенное спасибо и глубокий респект повару.<br>
+                    Наш праздник удался! Искренне благодарим «Соль и Перец»!</p>
+                <p class="review-signature"><span class="review-name">Алла</span><span class="review-company">Руководитель юридического департамента, компания "ВОЛЯ"</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 review">
+            <div class="col-md-3 review-portrait">
+                <img class="img-responsive" src="/img/quotes/anna.png"/>
+            </div>
+            <div class="col-md-9">
+                <p class="review-text">"Соль и Перец" - большие молодцы! Организация кейтеринга прошла на высшем уровне:
+                    всё очень вкусно, вовремя, сервировка отличная. Наши ребята остались довольны. И ещё один
+                    несомненный плюс для организаторов в том, что с "Солью и Перцем" просто и легко работать.
+                    Рекомендую!</p>
+                <p class="review-signature"><span class="review-name">Анна</span><span class="review-company">People partner, GlobalLogic Ukraine</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 review">
+            <div class="col-md-3 review-portrait">
+                <img class="img-responsive" src="/img/quotes/andrey.png"/>
+            </div>
+            <div class="col-md-9">
+                <p class="review-text">"Хочу выразить им огромную благодарность за великолепно выполненное мероприятие.
+                    Мы организовывали новогодний корпоратив с участием 70 человек. Ребята выполнили свою работу на 10 из
+                    10. Все четко организовали, все вовремя, просто супер. Спасибо вам большое!"</p>
+                <p class="review-signature"><span class="review-name">Андрей</span><span class="review-company">Генеральный директор, Торговый дом "Партнёр"</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 review">
+            <div class="col-md-3 review-portrait">
+                <img class="img-responsive" src="/img/quotes/andrei-i-katya.png"/>
+            </div>
+            <div class="col-md-9">
+                <p class="review-text">"Хотим поблагодарить кейтеринг "Соль и перец" за отличную организацию свадебного
+                    банкета. Все прошло на высшем уровне - вкусные блюда, хорошая сервировка, оперативность, приятный и
+                    внимательный персонал. Мы остались очень довольны!"</p>
+                <p class="review-signature"><span class="review-name">Катя и Андрей</span><span class="review-company">Молодожены</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 review">
+            <div class="col-md-3 review-portrait">
+                <img class="img-responsive" src="/img/quotes/bogdan.png"/>
+            </div>
+            <div class="col-md-9">
+                <p class="review-text">"Дико радий, що доля звела мене з Валентином.
+                    Тому що коли в один момент виникла критична потреба знайти
+                    кейтеринг "на завтра", він з Сіль та Перець виручив на найвищому
+                    рівні. У мого близького друга було весілля.<br>
+                    З цього приводу я готував для них вечірку. Місцем було обрано оглядовий майданчик на даху
+                    25-поверхового будинку.
+                    Сама подія була запланована на вівторок 19 травня.<br>
+                    До Валентина звернувся за два дні до дати - в вечір неділі, 17 травня. І, чьорт візьми, мене до
+                    мозку кісток підкупили його підхід в парі з оперативністю.
+                    Зустріти ділову відповідальність та стратегічне мислення - це до біса зручно.<br>
+                    За мене подумали, врахували чого і в голові навіть не мав,
+                    а потім гарнесенько реалізували на практиці. Не було надмірно, не було недостаньо, а було просто в
+                    яблучко підібрано все.
+                    Фуршет на 50 людей був у кожній своїй позиції влучним і смачним. І це зі свого боку вплинуло на те,
+                    що вечірка вийшла шикарною)<br>
+                    Дякую Сіль та Перець за допомогу. Дякую Валентину за чуйність.
+                    І я дуже радий, що знайшов команду, до якої, при нагоді, зможу звератися в майбутньому.
+                    Події бувають різні, а мати надійне рішення на увазі - це полегшення."</p>
+                <p class="review-signature"><span class="review-name">Богдан</span><span class="review-company">Космос табір</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 review">
+            <div class="col-md-3 review-portrait">
+                <img class="img-responsive" src="/img/quotes/marianna.jpg"/>
+            </div>
+            <div class="col-md-9">
+                <p class="review-text">"Самое важное событие в жизни любой девушки - это ее свадьба.<br>
+                    Я 3 месяца мучала кетеринговую компанию вопросами, деталями, сомнениями, просьбами, изменениями и
+                    волнениями.
+                    "Белый пояс" мастерства - это вытерпеть 3 месяца мучений о клиента, тщательно спланировать все до
+                    мелочей,
+                    не жалея ни сил,ни времени.<br>
+                    В итоге - у нас получилось удивительной красоты и вкусноты мероприятие.
+                    Но на самом деле, команда "Соль и перец" заслужила "черный пояс" мастерства, проявив себя в
+                    форс-мажорных
+                    обстоятельствах, когда нужно было быстро и эффективно адаптироваться под изменяющиеся обстоятельства
+                    и при
+                    этом без потери в качестве.<br>
+                    Подход к клиенту, внимательность и терпение, гибкость и профессионализм, кухня, подача,
+                    обслуживающий
+                    персонал - спасибо за все!<br>
+                    Нам казалось, что вы не просто приглашенная кетеринг компания, а что вы самые настоящие друзья.
+                    Мы всю жизнь, вспоминая нашу свадьбу, будем вспоминать и вас :) Спасибо!"</p>
+                <p class="review-signature"><span class="review-name">Марианна Хонина</span></p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 review">
+            <div class="col-md-3 review-portrait">
+                <img class="img-responsive" src="/img/quotes/bondarenko.png"/>
+            </div>
+            <div class="col-md-9">
+                <p class="review-text">С компанией «Соль и Перец» мы работали впервые. Нам порекомендовали этот
+                    кейтеринг, как давно работающий на выбранной нами площадке. Мы остановились на меню «Барбекю». Без
+                    ложной скромности могу сказать, что нам понравилось все: меню, логистика, внешний вид персонала, а
+                    также то, как общаются персонал и менеджеры. Формируя сценарий, мы несколько раз меняли меню и время
+                    подачи. Менеджер быстро и оперативно реагировал на запросы, а также давал дельные советы. Приятно
+                    было, что в конце дня кейтеринг сам предложил сформировать по контейнерам остатки еды. Демонтаж
+                    провели очень аккуратно, оставив возможность веселиться после окончания.
+                    <br><br>Я веду список лучших подрядчиков по организации мероприятий. «Соль и Перец» теперь в этом
+                    списке.</p>
+                <p class="review-signature"><span class="review-name">Ксения Бондаренко</span><span
+                        class="review-company">маркетинг и коммуникации UMH Digital</span></p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 review">
+            <div class="col-md-3 review-portrait">
+                <img class="img-responsive" src="/img/quotes/lena167.png"/>
+            </div>
+            <div class="col-md-9">
+                <p class="review-text">"На ланч для сталого розвитку з послом Швеції
+                    Андреасом фон Бекератом, на якому презентували
+                    результати українсько-шведського проекту
+                    "Освіта для сталого розвитку в дії",
+                    нам був потрібен особливий і водночас простий фуршет.<br>Основні вимоги:
+                    <br><br>- органічна їжа;<br>
+                    - використання максимально локальних продуктів;<br>
+                    - без м'яса, але з рибою;<br>
+                    - організація і оформлення у стилі еко.<br><br>
+                    Тобто все максимально за законами сталого розвитку.
+                    <br>"Сіль і Перець" перевершили наші сподівання.
+                    Все було професійно, злагоджено, спокійно:
+                    від отримання й узгодження замовлення,
+                    попереднього виїзду на місце і до самого фуршету,
+                    його організації й обслуговування.
+                    <br>Увага до замовника і його потреб,
+                    гнучкість і швидка реакція на зміни й уточнення
+                    — відмінно! Поєднання ціна-якість — супер!
+                    Їжа — дуже смачна, максимально виконано вимогу щодо органічності
+                    і локальності продуктів (як ми були здивовані українським тофу),
+                    гарно оформлена роздача. Робота офіціантів — відмінна!
+                    <br>Оформлення фуршету у стилі "еко" заслуговує особливої уваги:
+                    у офіціантів були прикріплені до сорочок красиві зелені букетики,
+                    на столах — квіти, а також "газони" у видовжених горщиках,
+                    в які були увіткнені власноруч зроблені маленькі паперові
+                    сонячні вітряки. Додатковою фішкою була також карта України,
+                    на якій позначили, звідки завезено той чи інший продукт.
+                    Жодного пластикового посуду, організували роздільний
+                    збір відходів. Дякуємо!"</p>
+                <p class="review-signature">
+                    <span class="review-name">Олена Харченко</span>
+                    <span class="review-company">медіа-координаторка проекту "Освіта для сталого розвитку в дії"</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row row-padding-bottom">
+        <div class="col-md-10 col-md-offset-1 review">
+            <div class="col-md-3 review-portrait">
+                <img class="img-responsive" src="/img/quotes/kate_juk.png"/>
+            </div>
+            <div class="col-md-9">
+                <p class="review-text">"На момент определения подрядчика по кейтерингу на проведение хакатона коллеги из
+                    других компаний порекомендовали "Соль и Перец". На сегодняшний день, не смотря на то, что хакатон
+                    достаточно популярный формат мероприятия, практически никто из кейтеринговых компаний не может
+                    помочь разработать меню и предложить адекватную цену с учетом сроков проведения и специфики
+                    хакатона. Очень благодарна коллегам за рекомендации, потому что ребята из "Соль и Перец" не только
+                    со всей ответственностью подошли к вопросу, но и помогли решить текущие проблемы с обеспечением
+                    удобств - например, доставили термопот, порекомендовали формат завтрака. А четкий просчет фуршетного
+                    меню с учетом кол-ва участников очень помог сэкономить :) Буду искренне рада поработать вместе еще!
+                    <br>А еще это было очень вкусно :)"</p>
+                <p class="review-signature">
+                    <span class="review-name">Катя Жук</span>
+                    <span class="review-company">менеджер проекта "Первый всеукраинский телекоммуникационный хакатон Broadcast Lab от Независимой ассоциации телерадиовещателей"</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row row-padding">
+    <div class="col-md-12">
+        <div class="line-heading text-center">
+            <span class="h-line"></span>
+            <p class="calc-heading nomargin" id="faq_anchor">Часто задаваемые вопросы</p>
+            <span class="h-line"></span>
+        </div>
+    </div>
+</div>
+<div class="row row-padding-bottom">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"
+             onClick="ga('send', 'event', 'FAQ', 'click');">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
+                           aria-controls="collapseOne">
+                            Какие есть дополнительные платежи?
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                        Никаких. Если мероприятия проходит в предварительно оговоренных временных рамках и условиях, то
+                        никаких дополнительных платежей не потребуется. Если Вам потребуется докупить что-то за
+                        несколько часов или во время мероприятия, в таком случае без дополнительного платежа не обойтись
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
+                           aria-expanded="false" aria-controls="collapseTwo">
+                            За сколько дней до мероприятия нужно утвердить меню?
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+                        Как можно раньше, но минимум за 2 дня до мероприятия, чтобы мы успели все качественно
+                        подготовить
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingThree">
+                    <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
+                           aria-expanded="false" aria-controls="collapseThree">
+                            За сколько дней до мероприятия нужно внести предоплату?
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body">
+                        Как можно раньше, но минимум за 2 дня до мероприятия. Размер предоплаты - 50 или 100%
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingFour">
+                    <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour"
+                           aria-expanded="false" aria-controls="collapseFour">
+                            У вас в меню нет блюда, которое я хочу. Я могу его заказать?
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                    <div class="panel-body">
+                        Да, просто сообщите нам об этом. Если это общеизвестное блюдо, то мы с удовольствием приготовим
+                        его для Вас. Это могут быть разные рецепты одного и того же салата, закуски с использованием
+                        какого-то экзотического ингредиента или просто народные блюда
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingFive">
+                    <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive"
+                           aria-expanded="false" aria-controls="collapseFive">
+                            Можно со своими алкогольными напитками?
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                    <div class="panel-body">
+                        Да, Вы можете брать свой алкоголь или же мы можем помочь Вам с закупкой за дополнительную плату
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingSix">
+                    <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix"
+                           aria-expanded="false" aria-controls="collapseSix">
+                            Есть ли у вас “пробковый сбор”?
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+                    <div class="panel-body">
+                        Нет. Мы стараемся максимально демократично относиться к таким вещам и не включать дополнительных
+                        платежей
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingSeven">
+                    <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven"
+                           aria-expanded="false" aria-controls="collapseSeven">
+                            У меня конференция. Мне нужен полный комплекс, на целый день. Сделаете?
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+                    <div class="panel-body">
+                        Сделаем. Можем предложить кофе-паузы, усиленные кофе-паузы, обед, вечерний фуршет и все, что
+                        нужно
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingEight">
+                    <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEight"
+                           aria-expanded="false" aria-controls="collapseEight">
+                            Я хочу провести мероприятие на природе, где нет никаких бытовых условий. Занимаетесь таким?
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
+                    <div class="panel-body">
+                        Без проблем. Мы возьмем с собой все необходимое - мангалы, посуду, столовые приборы. Столы,
+                        стулья, навесы, генераторы - не входят в стоимость заказа и оплачиваются отдельно
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingNine">
+                    <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseNine"
+                           aria-expanded="false" aria-controls="collapseNine">
+                            Какой кофе вы варите?
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseNine" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNine">
+                    <div class="panel-body">
+                        Натуральный, 100% арабика в паре с кофемашиной. В крайних случаях (нет электричества, требуется
+                        во время передвижения) готовим кофе в термос
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTen">
+                    <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTen"
+                           aria-expanded="false" aria-controls="collapseTen">
+                            Можно ли через вас заказать торт с надписью или фотографией?
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTen">
+                    <div class="panel-body">
+                        Да, можно. Вес торта - от 1кг
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingEleven">
+                    <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEleven"
+                           aria-expanded="false" aria-controls="collapseEleven">
+                            Вы делаете пиццу или суши?
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseEleven" class="panel-collapse collapse" role="tabpanel"
+                     aria-labelledby="headingEleven">
+                    <div class="panel-body">
+                        К сожалению, нет. Такую еду лучше заказать в специализированных заведениях
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwelve">
+                    <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwelve"
+                           aria-expanded="false" aria-controls="collapseTwelve">
+                            Как насчет вегетарианской или постной еды?
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwelve" class="panel-collapse collapse" role="tabpanel"
+                     aria-labelledby="headingTwelve">
+                    <div class="panel-body">
+                        Да, да и еще раз да! У нас был неоднократный опыт приготовления вегетарианских блюд и
+                        обслуживания подобных мероприятий на протяжении нескольких дней
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingThirteen">
+                    <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThirteen"
+                           aria-expanded="false" aria-controls="collapseThirteen">
+                            Можно ли у вас арендовать оборудование для выездного мероприятия?
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThirteen" class="panel-collapse collapse" role="tabpanel"
+                     aria-labelledby="headingThirteen">
+                    <div class="panel-body">
+                        Да, можно. Столы, стулья, шатры, дополнительное оборудование - все можно заказать у нас, но это
+                        не входит в стоимость, которая указана в калькуляторе
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="black-background">
+    <div class="row">
+        <div class="col-md-12">
+            <form role="form" id="contact-form2" data-toggle="validator">
+                <div class="form-group col-md-7 nomargin">
+                    <label for="inputName"></label>
+                    <input type="text" class="form-control" id="inputName" placeholder="Ваше имя"
+                           oninvalid="setCustomValidity('Пожалуйста, оставьте Ваше имя')"
+                           oninput="setCustomValidity('')" required name="name">
+                </div>
+                <div class="form-group col-md-7 nomargin">
+                    <label for="inputEmail"></label>
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Ваш e-mail"
+                           oninvalid="setCustomValidity('Пожалуйста, оставьте Ваш e-mail')"
+                           oninput="setCustomValidity('')" required name="email">
+                </div>
+                <div class="form-group col-md-7">
+                    <label for="inputPhone"></label>
+                    <input type="tel" class="form-control" id="inputPhone" placeholder="Ваш телефон"
+                           oninvalid="setCustomValidity('Пожалуйста, оставьте ваш телефон')"
+                           oninput="setCustomValidity('')" required name="phone">
+                </div>
+                <div class="black-submit col-md-5 text-center">
+                    <button type="submit" value="send" class="button-90 btn btn-lg btn-warning" form="contact-form2">
+                        Заказать кейтеринг
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row row-padding-top">
+    <div class="col-md-12">
+        <div class="line-heading text-center">
+            <span class="h-line"></span>
+            <p class="calc-heading" id="clients_anchor">Наши клиенты</p>
+            <span class="h-line"></span>
+        </div>
+    </div>
+</div>
+<div class="flower row-padding">
+    <div class="row row-padding">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-4">
+                <img class="img-responsive" src="/img/clients/global-logic.png" alt="GlobalLogic Ukraine"/>
+            </div>
+            <div class="col-md-4">
+                <img class="img-responsive" src="/img/clients/ciklum.png" alt="Ciklum"/>
+            </div>
+            <div class="col-md-4">
+                <img class="img-responsive" src="/img/clients/volia.png"/>
+            </div>
+        </div>
+    </div>
+    <div class="row row-padding">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-4">
+                <img class="img-responsive" src="/img/clients/partner.png" alt="Торговый дом Партнер"/>
+            </div>
+            <div class="col-md-4">
+                <img class="img-responsive" src="/img/clients/lifecell.png" alt="Lifecell"/>
+            </div>
+            <div class="col-md-4">
+                <img class="img-responsive" src="/img/clients/betlab.png" alt="BETLAB"/>
+            </div>
+        </div>
+    </div>
+    <div class="row row-padding">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-4">
+                <img class="img-responsive" src="/img/clients/luxoft.png" alt="Luxoft Ukraine"/>
+            </div>
+            <div class="col-md-4">
+                <img class="img-responsive" src="/img/clients/eltrino.png"/>
+            </div>
+            <div class="col-md-4">
+                <img class="img-responsive" src="/img/clients/wargaming.png" alt="Wargaming.net"/>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="line-heading text-center">
+            <span class="h-line"></span>
+            <p class="calc-heading" id="clients_anchor">Некоммерческие организации</p>
+            <span class="h-line"></span>
+        </div>
+    </div>
+</div>
+<div class="nonprofit">
+    <div class="row row-padding">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-4">
+                <img class="img-responsive" src="/img/clients/logo_rpr.png" alt="Реанімаційний Пакет Реформ"/>
+            </div>
+            <div class="col-md-4">
+                <img class="img-responsive" src="/img/clients/logo_umka.png"
+                     alt="Українська молодіжна кліматична асоціація"/>
+            </div>
+            <div class="col-md-4">
+                <img class="img-responsive" src="/img/clients/logo_eyp-ua.png" alt="European Youth Parliament"/>
+            </div>
+        </div>
+    </div>
+    <div class="row row-padding">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-4">
+                <img class="img-responsive" src="/img/clients/logo_greencubator.png" alt="greencubator"/>
+            </div>
+            <div class="col-md-4">
+                <img class="img-responsive" src="/img/clients/logo_necu.png"
+                     alt="Національний екологічний центр України"/>
+            </div>
+            <div class="col-md-4">
+                <img class="img-responsive" src="/img/clients/logo_boell_2.png"
+                     alt="Представництво Фонду імені Гайнріха Бьолля в Україні"/>
+            </div>
+        </div>
+    </div>
+    <div class="row row-padding">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-4">
+                <img class="img-responsive" src="/img/clients/logo_ecoclub.png" alt="Экоклуб"/>
+            </div>
+            <div class="col-md-4">
+                <img class="img-responsive" src="/img/clients/logo_centre-ua.png" alt="Центр спільних дій CentreUA"/>
+            </div>
+            <div class="col-md-4">
+                <img class="img-responsive" src="/img/clients/cdvp.png" alt="Центр демократії та верховенства права"/>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="team-background">
+    <div class="team-background-image">
+        <div class="row row-padding-top row-padding-bottom">
+            <div class="col-md-12">
+                <div class="line-heading text-center">
+                    <span class="h-line"></span>
+                    <p class="calc-heading" id="team_anchor">Команда</p>
+                    <span class="h-line"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row row-padding-bottom team-row">
+            <div class="col-xs-6 col-md-3">
+                <img class="img-responsive" src="/img/team/val200.png">
+                <p><strong>Валентин Низковолосов</strong></p>
+                <p>Директор</p>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <img class="img-responsive" src="/img/team/petya200.png">
+                <p><strong>Петр Федоренко</strong></p>
+                <p>Технический директор</p>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <img class="img-responsive" src="/img/team/den200.png">
+                <p><strong>Денис Цуканов</strong></p>
+                <p>Шеф-повар</p>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <img class="img-responsive" src="/img/team/yura200.png">
+                <p><strong>Юрий Иванченко</strong></p>
+                <p>Су-шеф</p>
+            </div>
+        </div>
+        <div class="row row-padding-bottom team-row">
+            <div class="col-xs-6 col-md-3">
+                <img class="img-responsive" src="/img/team/jenya200.png">
+                <p><strong>Евгений Кукла</strong></p>
+                <p>Администратор</p>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <img class="img-responsive" src="/img/team/maksim200.png">
+                <p><strong>Максим Сердюченко</strong></p>
+                <p>Администратор</p>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <img class="img-responsive" src="/img/team/tolik200.png">
+                <p><strong>Анатолий Кондратюк</strong></p>
+                <p>Администратор</p>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <img class="img-responsive" src="/img/team/vitya200.png">
+                <p><strong>Виктор Байбуза</strong></p>
+                <p>Администратор</p>
+            </div>
+        </div>
+        <div class="row row-padding-bottom team-row">
+            <div class="col-xs-6 col-md-3">
+                <img class="img-responsive" src="/img/team/olya200.png">
+                <p><strong>Ольга Притула</strong></p>
+                <p>Повар</p>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <img class="img-responsive" src="/img/team/vova200.png">
+                <p><strong>Владимир Летуновский</strong></p>
+                <p>Повар</p>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <img class="img-responsive" src="/img/team/elena200.png">
+                <p><strong>Елена Тюрина</strong></p>
+                <p>Повар</p>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <img class="img-responsive" src="/img/team/vanya200.png">
+                <p><strong>Иван Полищук</strong></p>
+                <p>Повар</p>
+            </div>
+        </div>
+        <div class="row row-padding-bottom team-row">
+            <div class="col-xs-6 col-md-3">
+                <img class="img-responsive" src="/img/team/anya200.png">
+                <p><strong>Анна Пономаренко</strong></p>
+                <p>Менеджер</p>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <img class="img-responsive" src="/img/team/sergey200.png">
+                <p><strong>Сергей Васильев</strong></p>
+                <p>Логист</p>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <img class="img-responsive" src="/img/team/lena200.png">
+                <p><strong>Елена Ангелова</strong></p>
+                <p>Декораторка / Фотографиня</p>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <img class="img-responsive" src="/img/team/nastya200.png">
+                <p><strong>Анастасия Скокова</strong></p>
+                <p>Декораторка</p>
+            </div>
+
+        </div>
+        <div class="row row-padding-bottom team-row">
+
+            <div class="col-xs-6 col-md-3">
+                <img class="img-responsive" src="/img/team/anastasia200.jpg">
+                <p><strong>Анастасия Рожинская</strong></p>
+                <p>СММ-лидерка</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<div class="green-background">
+    <div class="row row-padding">
+        <div class="col-md-6">
+            <p class="big-white row-padding" id="contacts_anchor">Заполните эту форму,</p>
+            <p class="big-white row-padding">и мы свяжемся с вами для уточнения деталей ⇒</p>
+        </div>
+        <div class="col-md-6">
+            <form role="form" id="contact-form3" data-toggle="validator">
+                <div class="form-group nomargin">
+                    <label for="inputName"></label>
+                    <input type="text" class="form-control width-80" id="inputName" placeholder="Ваше имя"
+                           oninvalid="setCustomValidity('Пожалуйста, оставьте Ваше имя')"
+                           oninput="setCustomValidity('')" required name="name">
+                </div>
+                <div class="form-group nomargin">
+                    <label for="inputPhone"></label>
+                    <input type="tel" class="form-control width-80" id="inputPhone" placeholder="Ваш телефон"
+                           oninvalid="setCustomValidity('Пожалуйста, оставьте ваш телефон')"
+                           oninput="setCustomValidity('')" required name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail"></label>
+                    <input type="email" class="form-control width-80" id="inputEmail" placeholder="Ваш e-mail"
+                           oninvalid="setCustomValidity('Пожалуйста, оставьте Ваш e-mail')"
+                           oninput="setCustomValidity('')" required name="email">
+                </div>
+                <div>
+                    <button type="submit" value="send" class="width-80 btn btn-lg btn-warning" form="contact-form3">
+                        Заказать кейтеринг
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="black-background">
+    <div class="row row-padding-top row-padding-side">
+        <div class="col-md-6 text-left">
+            <p class="footer-contacts nomargin">(044) 223-64-36</p>
+            <p class="footer-contacts nomargin">(093) 223-64-36</p>
+            <p class="footer-contacts nomargin">Пн - Пт с 10:00 до 19:00</p>
+            <p class="footer-contacts nomargin">info@saltandpepper.com.ua</p>
+        </div>
+        <div class="col-md-6">
+            <div class="facebook-wrapper">
+                <div class="fb-page" data-href="https://www.facebook.com/saltandpepper.com.ua" data-width="440"
+                     data-small-header="false" data-adapt-container-width="true" data-hide-cover="false"
+                     data-show-facepile="true">
+                    <div class="fb-xfbml-parse-ignore">
+                        <blockquote cite="https://www.facebook.com/saltandpepper.com.ua">
+                            <a href="https://www.facebook.com/saltandpepper.com.ua">Соль и Перец</a>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row row-padding-side">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/banquet##calc_anchor">Банкет</a></li>
+                        <li><a href="/furshet##calc_anchor">Фуршет</a></li>
+                        <li><a href="/bbq##calc_anchor">Барбекю</a></li>
+                        <li><a href="/coffee-brake##calc_anchor">Кофе-брейк</a></li>
+                        <li><a href="/blog">Блог</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+    <div class="row row-padding-side">
+        <div class="col-md-12">
+            <div id="vip-text">
+                <p>Кейтеринг (иногда называют «кетеринг») – относительно новая услуга на просторах Украины. Почему
+                    относительно? Потому что существует порядка 10 лет (что по меркам Европы и США очень мало), потому
+                    что этим термином владеет далеко не каждый житель страны, потому что культура выездного обслуживания
+                    оставляет желать лучшего.</p>
+                <p>Сутью этой услуги является проведения выездного обслуживания мероприятий за пределами привычных мест
+                    (ресторанов, кафе). Для этого подойдет все – площадка в лесу, концерт-холл, поле, зал в театре.</p>
+                <h3>История услуги</h3>
+                <p>Своим появлением кейтеринг обязан активному строительству многоэтажных зданий в Соединенных Штатах на
+                    пороге двадцатого века. В то время эта услуга была необходима для организации питания многочисленных
+                    рабочих, задействованных в ходе строительства. После того, как высотки были заселены офисами
+                    различных компаний, оказалось, что спрос на кейтеринг остался на высоком уровне, но теперь уже
+                    основной функцией этой сферы обслуживания была организация обедов офисным служащим и сотрудникам
+                    крупных производственных компаний. Впоследствии эта услуга стала формироваться в отдельную отрасль,
+                    которая включает самые разные виды обслуживания.
+                <p>
+                <h3>Кейтеринг – популярное направление в индустрии общественного питания</h3>
+                <p>Этот термин произошел от английского глагола cater, которое можно перевести, как угождать, снабжать
+                    провизией, или обслуживать. Сегодня эта услуга постепенно формируется в отдельную отрасль индустрии
+                    общественного питания, которая занимается предоставлением услуг в области выездного обслуживания
+                    клиентов. Она включает целый комплекс услуг:</p>
+                <ul>
+                    <li>доставка блюд, посуды и оборудования;</li>
+                    <li>сервировка выездных мероприятий;</li>
+                    <li>уборка после мероприятий и решение других вопросов.</li>
+                </ul>
+                <p>Привлекательность кейтеринга для потребителей в сравнении со стационарными ресторанами и кафе,
+                    заключается в мобильности. Услуга в данном случае может предоставляться в любом месте, которое
+                    выбрал заказчик.</p>
+
+                <p>В зависимости от типа предоставляемых услуг кейтеринт подразделяют на три вида:</p>
+                <ul>
+                    <li>Тайм-кейтеринг</li>
+                    <p>Это направление подразумевает обслуживание определенных событий, вечеринок, ивентов, выставок,
+                        встреч дилеров и тому подобных мероприятий. Как правило, это единоразовая услуга,
+                        подразумевающая полное обслуживание мероприятия.</p>
+                    <li>Кейтеринг на транспорте</li>
+                    <p>Такая услуга предполагает организацию питания на ЖД, авиа и автомобильном транспорте, как для
+                        пассажиров, так и для сотрудников транспортных компаний.</p>
+                    <li>Плейс-кейтеринг</li>
+                    <p>Проще говоря, это доставка обедов в офисы и на предприятия заказчика по определенному договору
+                        или контракту на постоянной основе.</p>
+                    <li>Кулинарный кейтеринг</li>
+                    <p>К этому направлению относят реализацию кулинарных изделий с доставкой потребителю на основе
+                        единичного или многоразового заказа.</p>
+                </ul>
+                <p>Кроме того, в зависимости от уровня сервиса специалисты выделяют ВИП кайтеринг, который подразумевает
+                    выездное ресторанное обслуживание для одного клиента, или небольшой группы.</p>
+                <p>Приготовление блюд для различных видов кейтеринга может осуществляться, как на собственном
+                    стационарном оборудовании компании, так и на открытой территории с использованием мобильной кухни,
+                    барбекю и других технологий приготовления.</p>
+                <h3>Основной перечень услуг, которые предоставляют кейтеринговые компании, включает следующие
+                    пункты:</h3>
+                <ul>
+                    <li>составление меню с расчетом необходимых продуктов и оценкой стоимости;</li>
+                    <li>подготовка мероприятия с организацией территории или планированием определенного помещения;</li>
+                    <li>предварительная дегустация блюд заказчиками;</li>
+                    <li>составление сценария кейтеринга;</li>
+                    <li>составление графиков обслуживания постоянных заказов;</li>
+                    <li>организация транспортной доставки и схем подвоза продуктов;</li>
+                    <li>организация уборки и вывоза мусора после мероприятий.</li>
+                </ul>
+                <h3>Наши преимущества</h3>
+                <ul>
+                    <li>Наше видение отличается от большинства компаний – мы не работаем по принятым на рынке шаблонам
+                    </li>
+                    <li>Наши цены не кусаются;</li>
+                    <li>У нас вы всегда можете получить бонус, скидку или подарок;</li>
+                    <li>Мы выполняем больше, чем обещаем.</li>
+                </ul>
+                <p><strong>Мы действительно ценим каждого клиента, которые заказал у нас мероприятие</strong></p>
+                <p>Каждое наше выездное мероприятие – не рутина, не очередное, а уникальное и индивидуальное. Для Вас мы
+                    проведем кейтеринг-обслуживание в Киеве, Борисполе, Броварах и пригородах Киева. Зачастую, цена за
+                    доставку инвентаря, еды, персонала не взымается и, даже, не входит в общую стоимость – мы это делаем
+                    бесплатно!</p>
+                <h4>Чем выездное мероприятие лучше стационарного?</h4>
+                <p>Вы проводите ваше мероприятие на природе или в любом месте, которое пожелаете, но, при этом, не
+                    привязаны к обстановке, дизайну, погодным условиям.</p>
+                <p>Например, заказываете кейтеринг в парковой зоне отдыха. С одной стороны вы находитесь в центре Киева,
+                    в самой гуще жизни, с другой – на природе, с той едой, которую вы заказали и с тем оформлением какое
+                    угодно именно Вам!</p>
+                <h4>Вы можете все украсить по своему желанию</h4>
+                <p>Зачастую, это является очень важным моментом. Во время выездного мероприятия вы можете расставить
+                    столы как вам угодно и выбрать их форму (прямоугольные, круглые).</p>
+                <h4>Кейтеринг дешевле, чем ресторан.</h4>
+                <p>Да, это факт! В ресторане, очень много факторов, которые влияют на конечную цену блюда – аренда
+                    помещения, оплата труда официантам и повара, даже тогда, когда они незаняты, оплата бухгалтерии. В
+                    кейтеринге многие из этих расходов не столь существенны, за счет чего можно снизить стоимость
+                    продукта.</p>
+                <h4>У нас нестандартный подход к обслуживанию во время выездных мероприятий.</h4>
+                <p>Это выражается в том, что у нас не «замылен глаз». Очень часто, те, кто работают в этом бизнесе уже
+                    10 лет, не замечает изменений рынка, желаний потребителей, инноваций – все делает по-старому. У нас
+                    вы найдете сочетание опыта и инноваций, которые мы воплощаем на выездных мероприятиях.</p>
+                <p><strong>Вы останетесь довольными, работая с нами!</strong></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="text-left modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Заполните форму и мы вам перезвоним</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" id="contact-form" data-toggle="validator">
+                    <div class="form-group">
+                        <label for="inputName">Имя</label>
+                        <input type="text" class="form-control" id="inputName" placeholder="Ваше имя"
+                               oninvalid="setCustomValidity('Пожалуйста, оставьте Ваше имя')"
+                               oninput="setCustomValidity('')" required name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPhone">Телефон</label>
+                        <input type="tel" class="form-control" id="inputPhone" placeholder="Ваш телефон"
+                               oninvalid="setCustomValidity('Пожалуйста, оставьте ваш телефон')"
+                               oninput="setCustomValidity('')" required name="phone">
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" value="send" class="btn-lg btn-success" form="contact-form">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="js/sl/css/angular-awesome-slider.css">
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/vendor/angular.min.js"></script>
+<script src="js/vendor/mask.js"></script>
+<script type="text/javascript" src="js/sl/core/index.js"></script>
+<script type="text/javascript" src="js/sl/core/config/constants.js"></script>
+<script type="text/javascript" src="js/sl/core/model/draggable.factory.js"></script>
+<script type="text/javascript" src="js/sl/core/model/pointer.factory.js"></script>
+<script type="text/javascript" src="js/sl/core/model/slider.factory.js"></script>
+<script type="text/javascript" src="js/sl/core/utils/utils.factory.js"></script>
+<script type="text/javascript" src="js/sl/core/template/slider.tmpl.js"></script>
+<script src="js/forms.js"></script>
+<script>
+    var mainApp = angular.module("mainApp", ['angularAwesomeSlider', 'ui.mask']);//['hc.slider']);
+
+    mainApp.controller('calcController', function ($scope, $http) {
+        var url = "conf.json";
+        $http.get(url).success(function (response) {
+            $scope.calc.subjects = response;
+
+        });
+        var url2 = "additional.json";
+        $http.get(url2).success(function (response) {
+            $scope.calc.add_options = response;
+        });
+
+        if (window.location.href.indexOf("banquet") > -1) {
+            var service_name_kokoc = "banket";
+        } else if (window.location.href.indexOf("bbq") > -1) {
+            var service_name_kokoc = "barbeq";
+        } else if (window.location.href.indexOf("coffee-brake") > -1) {
+            var service_name_kokoc = "koffe-break";
+        } else {
+            var service_name_kokoc = "furshet";
+        }
+        $scope.calc = {
+            service_name: service_name_kokoc,
+            service_eddition: "econom",
+            service_type: 0,
+            total_food: function () {
+                var calcObject;
+                var co = $scope.form_a;
+                calcObject = $scope.calc;
+                if (!Object.keys(calcObject.subjects).length) {
+                    return 0;
+                }
+                var Things = calcObject.subjects[co.service_name]['price_list']
+                    [co.service_eddition]['food'];
+                var total = 0;
+
+                for (var i of Object.keys(Things)) {
+
+                    if (Things[i]['value'] != "-") {
+                        total = total + Things[i]['value'];
+                    }
+
+                }
+                ;
+
+                return total;
+            },
+            total_drink: function () {
+                var calcObject;
+                var co = $scope.form_a;
+                calcObject = $scope.calc;
+                if (!Object.keys(calcObject.subjects).length) {
+                    return 0;
+                }
+                var Things = calcObject.subjects[co.service_name]['price_list']
+                    [co.service_eddition]['drink'];
+                var total = 0;
+
+                for (var i of Object.keys(Things)) {
+
+                    if (Things[i]['value'] != "-") {
+                        total = total + Things[i]['value'];
+                    }
+
+                }
+                ;
+
+                return total;
+            },
+            total_fee: function () {
+                var calcObject;
+                calcObject = $scope.calc;
+                var co = $scope.form_a;
+                if (!Object.keys(calcObject.subjects).length) {
+                    return 0;
+                }
+                var per_pers = calcObject.subjects[co.service_name]['price_list']
+                    [co.service_eddition]['price'];
+                var res = 0;
+
+                for (var i of Object.keys($scope.additional)) {
+
+                    if ($scope.additional[i]) {
+                        per_pers = calcObject.add_options[i].price + per_pers;
+
+                        if (calcObject.add_options[i].fixed_price) {
+                            res += calcObject.add_options[i].fixed_price;
+                        }
+                        ;
+                    }
+                }
+                ;
+
+                var min = calcObject.subjects[co.service_name]['min_price'];
+                res += per_pers * co.people_count;
+                if (res < min) {
+                    calcObject.min_order = "(минимальная сумма)";
+                } else {
+                    calcObject.min_order = "";
+                }
+                ;
+                co.price = min < res ? res : min;
+                return min < res ? res : min;
+            },
+            subjects: {},
+            add_options: {},
+
+            min_order: "",
+            people_count: 20,
+            price: 0,
+
+            add_opt: function (name) {
+                if ($scope.additional[name]) {
+                    $scope.additional[name] = true;
+                } else {
+                    $scope.additional[name] = false;
+                }
+
+            },
+            setter: function (name) {
+                $scope.form_a.service_name = name;
+
+
+            },
+
+            serv_select: function (number) {
+                var calcObject;
+                calcObject = $scope.calc;
+                var co = $scope.form_a;
+                var mapper = Object.keys(calcObject.subjects[co.service_name]['price_list']);
+                co.service_eddition = mapper[number];
+            },
+
+        };
+
+        $scope.additional = {};
+        $scope.form_a = {
+            name: '',
+            email: '',
+            phone: '',
+            comment: '',
+            people_count: 30,
+            price: 0,
+            service_name: service_name_kokoc,
+            service_eddition: "econom",
+
+        }
+        $scope.form_b = {
+            name: '',
+            email: '',
+            phone: '',
+            comment: '',
+
+        }
+
+        $scope.stat = function () {
+            var calcObject;
+            calcObject = $scope.calc;
+
+            if (!Object.keys(calcObject.subjects).length) {
+                return 0;
+            }
+            //return window.btoa(JSON.stringify($scope.calc));
+
+            $http({
+                method: 'POST',
+                url: '/amo/',
+                data: $.param({
+                    config: angular.toJson(
+                        [].concat(
+                            $scope.form_a).concat($scope.additional).concat(
+                            $scope.form_b)
+                    )
+                }),//({config:$scope.calc }
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(
+                window.location = "thanks.php"
+            );
+
+
+        };
+
+    });
+
+</script>
+<script src="/js/shorten.js"></script>
+<script src="/js/ekko-lightbox.js"></script>
+<link rel="stylesheet" href="/css/ekko-lightbox.css">
+</script>
+<
+script >
+$('#vip-text').shorten({
+    moreText: 'читать дальше',
+    lessText: 'развидеть'
+});
+</script>
+<script>
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function (event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
+    });
+</script>
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-41248431-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+<script type="text/javascript">
+    (function (d, w, s) {
+        var widgetHash = 'dojVZvvqX7', gcw = d.createElement(s);
+        gcw.type = 'text/javascript';
+        gcw.async = true;
+        gcw.src = '//widgets.binotel.com/getcall/widgets/' + widgetHash + '.js';
+        var sn = d.getElementsByTagName(s)[0];
+        sn.parentNode.insertBefore(gcw, sn);
+    })(document, window, 'script');
+</script>
+<script type="text/javascript">
+    var calc_menu = $("#calcMenuEvent");
+    calc_menu.click(function () {
+        ga('send', 'event', 'Calc Menu', 'Click');
+    })
+</script>
+<script>
+    var portfolio_menu = $("ul.cases > li");
+
+    portfolio_menu.click(function () {
+        var portfolio_menu_item = $(this).text()
+        ga('send', 'event', 'Portfolio', 'Click', portfolio_menu_item);
+    });
+
+    $(window).scroll(function () {
+        var hT = $('.team-background').offset().top,
+            hH = $('.team-background').outerHeight(),
+            wH = $(window).height(),
+            wS = $(this).scrollTop();
+        if (wS > (hT + hH - wH)) {
+            ga('send', 'event', 'Team', 'View');
+        }
+    });
+</script>
+
+<div id="fb-root"></div>
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<script>(function () {
+    var _fbq = window._fbq || (window._fbq = []);
+    if (!_fbq.loaded) {
+        var fbds = document.createElement('script');
+        fbds.async = true;
+        fbds.src = '//connect.facebook.net/en_US/fbds.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(fbds, s);
+        _fbq.loaded = true;
+    }
+    _fbq.push(['addPixelId', '490365397791389']);
+})();
+window._fbq = window._fbq || [];
+window._fbq.push(['track', 'PixelInitialized', {}]);
+</script>
+<noscript><img height="1" width="1" alt="" style="display:none"
+               src="https://www.facebook.com/tr?id=490365397791389&amp;ev=PixelInitialized"/></noscript>
+</body>
+</html>

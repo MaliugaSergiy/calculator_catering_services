@@ -1,0 +1,19 @@
+<table class="table table-condensed">
+    <thead>
+    <tr>
+        <td>Еда</td>
+        <td>граммы</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="subject in calc.subjects[form_a.service_name]['price_list'][form_a.service_eddition]['food']">
+        <td>{{subject.name}}</td>
+        <td>{{ subject.value }}</td>
+    </tr>
+    <tr>
+        <td>Всего</td>
+        <td>{{calc.total_food()}}</td>
+    </tr>
+    </tbody>
+</table>
+

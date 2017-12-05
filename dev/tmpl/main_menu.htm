@@ -1,0 +1,56 @@
+
+
+
+<div class="main_menu_container" >
+    <div ng-click="calc.setter(key);" onclick="$(this).siblings().removeClass('active');$(this).addClass('active');" ng-repeat="(key,val) in calc.subjects" class="box1" >
+        <h3 class="h3">
+            <span class="span"  >{{ val.menu_name}}</span>
+        </h3>
+    </div>
+</div>
+
+<!--<div class="main_menu_container" onclick="$(this).siblings().removeClass('active');$(this).addClass('active');" ng-repeat="(key,val) in calc.subjects">-->
+    <!--<div class="box"  ng-click="calc.setter(key);" >{{ val.menu_name}}</div>-->
+<!--</div>-->
+
+<!--/////////////////////////////////// original /////////////////////-->
+
+
+<!--<nav class="navbar navbar-default calc-menu">-->
+    <!--<div class="container-fluid">-->
+        <!--<div class="navbar-header">-->
+            <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">-->
+                <!--<span class="sr-only">Toggle navigation</span>-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+            <!--</button>-->
+
+        <!--</div>-->
+
+        <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+            <!--<ul class="nav navbar-nav">-->
+
+
+                <!--<li class="main_menu" onclick="$('.navbar-nav>li.main_menu').removeClass('active');$(this).addClass('active');" ng-repeat="(key,val) in calc.subjects">-->
+                    <!--<a  ng-click="calc.setter(key);" >{{ val.menu_name}}</a>-->
+                <!--</li>-->
+
+                <!--<li class="dropdown">-->
+                    <!--<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">-->
+                        <!--Р”РѕРї. РћРїС†РёРё-->
+                        <!--<span class="caret"></span>-->
+                    <!--</a>-->
+
+                    <!--<ul class="dropdown-menu" >-->
+                        <!--<li ng-repeat="(key,val) in calc.add_options">-->
+                            <!--<label class="btn btn-default" >-->
+                                <!--<input type="checkbox" autocomplete="off" ng-change="calc.add_opt(key)" ng-model="additional[key]"></input>{{ val.name}}-->
+                            <!--</label>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</nav>-->
